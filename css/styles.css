@@ -432,20 +432,19 @@ html {
 :root {
   --p: 47 12% 70%;
   --pf: 47 12% 56%;
-  --sf: 47 12% 56%;
-  --af: 47 12% 56%;
-  --nf: 47 12% 56%;
-  --b2: 25 23% 71%;
-  --b3: 25 23% 64%;
+  --sf: 25 35% 47%;
+  --af: 26 35% 25%;
+  --nf: 26 35% 25%;
+  --b3: 22 15% 77%;
   --in: 198 93% 60%;
   --su: 158 64% 52%;
   --wa: 43 96% 56%;
   --er: 0 91% 71%;
   --bc: 25 65% 16%;
   --pc: 47 55% 14%;
-  --sc: 47 55% 14%;
-  --ac: 47 55% 14%;
-  --nc: 47 55% 14%;
+  --sc: 25 100% 12%;
+  --ac: 26 100% 86%;
+  --nc: 26 100% 86%;
   --inc: 198 100% 12%;
   --suc: 158 100% 10%;
   --wac: 43 100% 11%;
@@ -460,10 +459,11 @@ html {
   --border-btn: 1px;
   --tab-border: 1px;
   --tab-radius: 0.5rem;
-  --s: 47 12% 70%;
-  --a: 47 12% 70%;
-  --n: 47 12% 70%;
+  --s: 25 35% 59%;
+  --a: 26 35% 31%;
+  --n: 26 35% 31%;
   --b1: 25 23% 79%;
+  --b2: 22 15% 86%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -509,20 +509,19 @@ html {
 [data-theme=mytheme] {
   --p: 47 12% 70%;
   --pf: 47 12% 56%;
-  --sf: 47 12% 56%;
-  --af: 47 12% 56%;
-  --nf: 47 12% 56%;
-  --b2: 25 23% 71%;
-  --b3: 25 23% 64%;
+  --sf: 25 35% 47%;
+  --af: 26 35% 25%;
+  --nf: 26 35% 25%;
+  --b3: 22 15% 77%;
   --in: 198 93% 60%;
   --su: 158 64% 52%;
   --wa: 43 96% 56%;
   --er: 0 91% 71%;
   --bc: 25 65% 16%;
   --pc: 47 55% 14%;
-  --sc: 47 55% 14%;
-  --ac: 47 55% 14%;
-  --nc: 47 55% 14%;
+  --sc: 25 100% 12%;
+  --ac: 26 100% 86%;
+  --nc: 26 100% 86%;
   --inc: 198 100% 12%;
   --suc: 158 100% 10%;
   --wac: 43 100% 11%;
@@ -537,10 +536,11 @@ html {
   --border-btn: 1px;
   --tab-border: 1px;
   --tab-radius: 0.5rem;
-  --s: 47 12% 70%;
-  --a: 47 12% 70%;
-  --n: 47 12% 70%;
+  --s: 25 35% 59%;
+  --a: 26 35% 31%;
+  --n: 26 35% 31%;
   --b1: 25 23% 79%;
+  --b2: 22 15% 86%;
 }
 
 [data-theme=dark] {
@@ -11585,24 +11585,27 @@ footer {
 }
 
 .flexRecette:nth-child(1) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
+  flex: 1 1 auto;
+  flex-grow: 1;
+  align-self: stretch;
   margin: 1%;
+  max-height: 400px;
 }
 
 .flexRecette:nth-child(2) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
+  flex: 1 1 auto;
+  flex-grow: 1;
+  align-self: stretch;
   margin: 1%;
+  max-height: 400px;
 }
 
 .flexRecette:nth-child(3) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
+  flex: 1 1 auto;
+  flex-grow: 1;
+  align-self: stretch;
   margin: 1%;
+  max-height: 400px;
 }
 
 .table .hover\:hover:hovertr:hover th,
