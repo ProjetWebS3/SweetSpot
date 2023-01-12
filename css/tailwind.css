@@ -7,10 +7,6 @@ footer {
     display: block;
 }
 
-#searchBar {
-    background-color: #e0d9d5;
-}
-
 .flexRecettes {
     display: flex;
     flex-direction: row;
@@ -42,5 +38,21 @@ footer {
     flex-grow: 1;
     align-self: stretch;
     margin: 1%;
+    max-height: 400px;
+}
+
+.flexSearchRecettes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    margin-top: 2%;
+}
+
+.flexAllRecette {
+    margin: 1%;
+    flex: 0 0 29%;
     max-height: 400px;
 }
