@@ -17,6 +17,12 @@ class Recette {
         $query = $this->db->query("SELECT * FROM `Recette` WHERE `id_recette` = $id_recette");
         $recette = $query->fetchAll();
         return $recette;
-      }
+    }
+
+    public function searchRecette($search){
+        $query = $this->db->query("SELECT * FROM `Recette` WHERE `titre` LIKE '%$search%'");
+        $recette = $query->fetchAll();
+        return $recette;
+    }
 
 }
