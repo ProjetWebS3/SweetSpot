@@ -1,1 +1,1 @@
-<p class="text-base-200 text-warning">Note: <?= $A_vue['recette'][0]['description'] ?></p>
+<p class="text-base-200 text-warning"><?= $A_vue['recette'][0]['description'] ?></p>
