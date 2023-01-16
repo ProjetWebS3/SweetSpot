@@ -17,3 +17,29 @@ for ($i = 0; $i < 3; $i++) {
 ?>
 </div>
 
+
+<h2 class="testClass text-xl">Listes des catégories</h2>
+
+<?php
+for ($j = 0; $j < 3; $j++) {
+?>
+<div class="flexRecettes" >
+
+<?php
+for ($i = 0; $i < 4; $i++) {
+?>
+<div data-theme="mytheme" class="card  bg-base-100 shadow-xl bg-secondary">
+  <div class="card-body">
+    <h2 class="card-title">Shoes!</h2>
+    <div class="card-actions justify-center">
+      <button class="btn btn-primary">Go to</button>
+    </div>
+  </div>
+</div>
+<?php
+}
+?>
+</div>
+<?php
+}
+?>

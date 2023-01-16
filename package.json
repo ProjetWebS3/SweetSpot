@@ -66,9 +66,6 @@
     "devDependencies": {
         "tailwindcss": "^3.2.4"
     },
-    "scripts": {
-        "build-css": "tailwindcss build css/styles.css -o css/tailwind.css"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ProjetWebS3/Patisserie.git"

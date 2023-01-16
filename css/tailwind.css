@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.testClass {
+    margin-top: 2%;
+}
+
 footer {
     position: fixed;
     bottom: 0;
