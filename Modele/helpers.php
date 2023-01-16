@@ -18,4 +18,14 @@ function rating_stars($rating) {
   
   return $output;
 }
-?>
+
+
+function getProperColor($var)
+{
+    if ($var >= 0 && $var < 4)
+        return '#00FF00';
+    else if ($var >= 4 && $var <= 7)
+        return '#FF8000';
+    else if ($var > 7)
+        return '#FF0000';
+}
