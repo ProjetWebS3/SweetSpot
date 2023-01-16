@@ -18,28 +18,17 @@ for ($i = 0; $i < 3; $i++) {
 </div>
 
 
-<h2 class="testClass text-xl">Listes des catégories</h2>
+<h2 class="text-xl my-5">Listes des catégories</h2>
 
-<?php
-for ($j = 0; $j < 3; $j++) {
-?>
-<div class="flexRecettes" >
-
-<?php
-for ($i = 0; $i < 4; $i++) {
-?>
-<div data-theme="mytheme" class="card  bg-base-100 shadow-xl bg-secondary">
-  <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <div class="card-actions justify-center">
-      <button class="btn btn-primary">Go to</button>
-    </div>
-  </div>
+<div class="flex w-full flex-row flex-wrap justify-center">
+  <?php
+    $i = 0;
+  while(isset($A_vue['categorie'][$i]['nom'])) { 
+  ?>
+  <a href="/Recette/searchByCategory/<?=$A_vue['categorie'][$i]['id_type']?>"><div style="background-color: <?=getProperColor($i)?>" class="grid flex-grow  h-28 w-28 card card-normal bg-base-300 rounded-box place-items-center"><p class="font-semibold"><?=$A_vue['categorie'][$i]['type']?></p><?=$A_vue['categorie'][$i]['nom']?></div></a>
+  <div class="divider lg:divider-horizontal"></div> 
+  <?php 
+    $i++;
+  }
+  ?>
 </div>
-<?php
-}
-?>
-</div>
-<?php
-}
-?>
