@@ -7,14 +7,23 @@ class Compte {
         $this->db = $db;
     }
 
-    public function submitAction($id_compte, $pseudo, $mail, $password, $admin){
-        $query = $this->db->prepare("INSERT INTO Compte (id_compte, Pseudo, Email, Password, Admin) VALUES (:id_compte, :pseudo, :email, :password, :admin);");
-        $query->bindValue(':id_compte', $id_compte, PDO::PARAM_INT);
-        $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-        $query->bindValue(':email', $mail, PDO::PARAM_STR);
-        $query->bindValue(':password', $password, PDO::PARAM_STR);
-        $query->bindValue(':admin', $admin, PDO::PARAM_BOOL);
-        $query->execute();
+    public function submitAction($pseudo, $mail, $password, $admin){
+
+        $query = $this->db->query("SELECT * FROM Compte WHERE Email = '$mail'");
+        $result = $query->fetchAll();
+
+        if(count($result) > 0) {           
+            var_dump("L'adresse mail existe déja");   
+        } else {         
+            $query = $this->db->prepare("INSERT INTO Compte (id_compte, Pseudo, Email, Password, Admin) VALUES (:id_compte, :pseudo, :email, :password, :admin);");
+            $query->bindValue(':id_compte', '', PDO::PARAM_INT);
+            $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+            $query->bindValue(':email', $mail, PDO::PARAM_STR);
+            $query->bindValue(':password', $password, PDO::PARAM_STR);
+            $query->bindValue(':admin', $admin, PDO::PARAM_BOOL);
+            $query->execute();
+        }
+
     }
 
     public function getCompte($id_compte){
