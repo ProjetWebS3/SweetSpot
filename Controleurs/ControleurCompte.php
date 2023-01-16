@@ -6,7 +6,7 @@ final class ControleurCompte
     {
         Vue::montrer('gestionCompte/inscription');
     }
-    
+
     public function connexionAction(){
         Vue::montrer('gestionCompte/connexion', array('compte' => $compte));
     }
@@ -24,8 +24,10 @@ final class ControleurCompte
     }
 
     public function connecterAction(){
-        var_dump($_GET['pseudo'], $_GET['email'], $_GET['password']);
-        die();
+        $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+        $model = new Compte($db);
+        $compte = $model->getCompteAction($_GET['email'], $_GET['password']);
+        Vue::montrer('gestionCompte/Connexion', array('Connexion' => $compte));
     }
 
 }

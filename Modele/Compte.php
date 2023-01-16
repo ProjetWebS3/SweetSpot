@@ -26,10 +26,22 @@ class Compte {
 
     }
 
-    public function getCompte($id_compte){
-        $query = $this->db->query("SELECT * FROM `Compte` WHERE `id_compte` = $id_compte");
-        $recette = $query->fetchAll();
-        return $recette;
+    public function getCompteAction($mail, $password){
+        $query = $this->db->query("SELECT Password FROM Compte WHERE Email = '$mail'");
+        $result = $query->fetchAll();
+        
+        if ($result[0]["Password"] == $password) {
+            var_dump("Vous êtes connecté");
+        } else {
+            print_r("Mauvais mot de passe ");
+            print_r("<br>");
+            print_r("le mot de passe était : ");
+            print_r($result[0]["Password"]);
+            print_r("<br>");
+            print_r("le mot de passe entré était : ");
+            print_r($password);
+            print_r("<br>");
+        }
     }
 
 }

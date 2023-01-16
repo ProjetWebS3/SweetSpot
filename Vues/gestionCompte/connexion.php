@@ -1,5 +1,5 @@
 <p> se connecter </p>
-<form action="/Compte/connexion/" method=get>
+<form action="/Compte/connecter/" method=get>
   <label for="email">Email :</label>
   <input type="email" id="email" name="email" style="border: 1px solid black;"><br><br>
   <label for="password">Mot de passe :</label>
