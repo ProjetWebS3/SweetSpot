@@ -16,10 +16,9 @@ final class ControleurCompte
     
     public function showAction()
     {
-    require_once("Modele/helpers.php");
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Compte($db);
-    $compte = $model->getCompte($_GET['show']);
+    $compte = $model->submitAction(4, $_GET['pseudo'], $_GET['email'], $_GET['password'], 0);
     Vue::montrer('gestionCompte/compte', array('compte' => $compte));
     }
 
