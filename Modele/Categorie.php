@@ -18,7 +18,7 @@ class Categorie
     }
 
     public function searchByCategory($nomCategorie) {
-        $sql = "SELECT DISTINCT titre FROM Recette,RecetteCategorie WHERE RecetteCategorie.id_recette=Recette.id_recette AND RecetteCategorie.id_type=:nomCategorie";
+        $sql = "SELECT DISTINCT * FROM Recette,RecetteCategorie WHERE RecetteCategorie.id_recette=Recette.id_recette AND RecetteCategorie.id_type=:nomCategorie";
         $requete = $this->db->prepare($sql);
         $requete->bindParam(':nomCategorie', $nomCategorie);
         $requete->execute();
