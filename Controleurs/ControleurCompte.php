@@ -27,7 +27,12 @@ final class ControleurCompte
         $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
         $model = new Compte($db);
         $compte = $model->getCompteAction($_GET['email'], $_GET['password']);
-        Vue::montrer('gestionCompte/Connexion', array('Connexion' => $compte));
+        Vue::montrer('gestionCompte/Connexion', array('Connexion' => $compte));        
+        if ( $_SESSION['login'] == true) {
+            //var_dump("Bonjour, ", $_SESSION['login']['Pseudo']);
+        } else {
+            //var_dump("Vous n'êtes pas connecté");
+        }
     }
 
 }

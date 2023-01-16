@@ -1,4 +1,8 @@
 
+<p class="text-base-200 text-warning">
+  Bonjour 
+<?= $_SESSION['login']['Pseudo'] ?> <br>
+</p>  
 <a href="/compte/inscription" class="btn btn-ghost">Je n'ai pas de compte</a>
 
 <form action="/Compte/connecter/" method=get>
