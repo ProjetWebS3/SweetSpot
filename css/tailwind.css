@@ -62,3 +62,43 @@ footer {
     flex: 0 0 29%;
     max-height: 400px;
 }
+
+/*body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.insert_info{
+    background-color: #D6C8BE;
+    border-color: transparent;
+    
+}
+
+input[name=recip_name]{
+    width: 100%;
+}
+
+select{
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 2px;
+
+}
+
+.form{
+    display: flex;
+}
+
+
+textarea {
+    width: 30em;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    resize: none;
+}
+  
+*/
