@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Recette {
     private $db;
@@ -23,6 +24,9 @@ class Recette {
         $query = $this->db->query("SELECT * FROM `Recette` WHERE `titre` LIKE '%$search%'");
         $recette = $query->fetchAll();
         return $recette;
+    }
+
+    public function commenter(){
     }
 
 }

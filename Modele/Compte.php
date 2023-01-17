@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Compte {
     private $db;
@@ -30,7 +31,6 @@ class Compte {
         $query = $this->db->query("SELECT * FROM Compte WHERE Email = '$mail'");
         $result = $query->fetchAll();
         if ($result[0]["Password"] == $password) {
-            session_start();
             $_SESSION['login'] = $result[0];
         }
     }
