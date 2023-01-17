@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 final class ControleurDefaut
 {
     
@@ -12,6 +12,7 @@ final class ControleurDefaut
         $recette = $recetteModel->get3Recettes();
         $categorie = $categorieModel->getCategories();
         Vue::montrer('accueil/introduction', array('recette' => $recette, 'categorie' => $categorie));
+
         
     }
 

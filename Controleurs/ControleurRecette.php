@@ -28,11 +28,12 @@ final class ControleurRecette
   }
       
   public function commenterAction(){
-    session_start();
-    if($_SESSION[$login]== NULL){
+
+    if($_SESSION['login'] == NULL){
       var_dump("Vous n'etes pas connecter");
     } else{
-      var_dump($_SESSION[$login]);
+      echo ("Bonjour");
+      print_r($_SESSION['login']['Pseudo']);
     }
     die();
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
