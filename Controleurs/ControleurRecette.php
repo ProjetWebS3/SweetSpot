@@ -1,5 +1,4 @@
 <?php
-session_start();
 final class ControleurRecette
 {
     public function showAction($params) {
