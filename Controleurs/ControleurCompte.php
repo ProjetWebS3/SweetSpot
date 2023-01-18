@@ -29,11 +29,11 @@ final class ControleurCompte
         $model = new Compte($db);
         $model->getCompteAction($_GET['email'], $_GET['password']);
         Vue::montrer('gestionCompte/Connexion');        
-        if ( $_SESSION['login'] == true) {
+        /*if ( $_SESSION['token'] == true) {
             //var_dump("Bonjour, ", $_SESSION['login']['Pseudo']);
         } else {
             //var_dump("Vous n'êtes pas connecté");
-        }
+        }*/
     }
 
 }
