@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <?php 
     session_start(); 
 ?>
+<!DOCTYPE html>
 <html lang="fr" data-theme="light">
     <head>
         <script src="https://kit.fontawesome.com/067ace0f2b.js" crossorigin="anonymous"></script>
