@@ -27,19 +27,15 @@ final class ControleurRecette
     Vue::montrer('recette/pageSearchResult', array('recettes' => $recettes));
   }
       
-  public function commenterAction(){
-
+  public function commenterAction($params){
     if($_SESSION['login'] == NULL){
-      var_dump("Vous n'etes pas connecter");
+      //var_dump("Vous n'etes pas connecter");
     } else{
-      echo ("Bonjour");
-      print_r($_SESSION['login']['Pseudo']);
+      $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+      $model = new Recette($db);
+      $model->commenter($_GET['commentaire'], $params[0]);
+      header("Location: /Recette/show/$params[0]");
     }
-    die();
-    $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
-    $model = new Commentaire($db);
-    $model->commenter($_POST['id_recette'], $_POST['commentaire']);
-    header("Location: /recette/".$_POST['id_recette']);
   }
 }
 ?>
