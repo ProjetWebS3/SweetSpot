@@ -25,4 +25,12 @@ class Categorie
         return $requete->fetchAll();
     }
 
+    public function insertCategorie($id_recette, $id_type) {
+        $sql = "INSERT INTO RecetteCategorie (id_recette, id_type) VALUES (:id_recette, :id_type)";
+        $requete = $this->db->prepare($sql);
+        $requete->bindParam(':id_recette', $id_recette);
+        $requete->bindParam(':id_type', $id_type);
+        $requete->execute();
+    }
+
 }

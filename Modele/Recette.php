@@ -37,4 +37,18 @@ class Recette {
 
     }
 
+    public function addRecipeWithCat($titre,$description, $ingredient,$recipeDuraction,$recipePrice,$recipeDifficulty){
+        $query = $this->db->prepare("INSERT INTO Recette (titre, description, ingredient) VALUES (:titre, :description,:ingredient);");
+        $query->bindValue(':titre', $titre, PDO::PARAM_STR);
+        $query->bindValue(':description', $description, PDO::PARAM_STR);
+        $query->bindValue(':ingredient', $ingredient, PDO::PARAM_STR);
+        $query->execute();
+        $lastId = $this->db->lastInsertId();
+        $modelCat = new Categorie($this->db);
+        $modelCat->insertCategorie($lastId, $recipeDuraction);
+        $modelCat->insertCategorie($lastId, $recipePrice);
+        $modelCat->insertCategorie($lastId, $recipeDifficulty);
+
+    }
+
 }

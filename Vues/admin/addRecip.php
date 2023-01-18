@@ -1,32 +1,33 @@
 <div class="createRecipeFlex">
 <h1 class="addRecipTitle">Créer une recette :</h1>
-<form class="addRecipForm" action="add-recip.php" method="post">
-  <div class="input_name">Nom de la recette : </div><input class= "inputRecipeName" type="text" name="recip_name " required> <br><br>
+<form class="addRecipForm" action="/admin/addRecipe" method="post">
+  <div class="input_name">Nom de la recette : </div><input class= "inputRecipeName" type="text" name="titre" required> <br><br>
   <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Recipe Image</label>
-  <input class="inputImageRecipe block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="fileInput" type="file" onchange="checkFile()">
+  <input class="inputImageRecipe block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="fileInput" type="file" name="image" onchange="checkFile()">
   <p class="mt-1 text-sm text-gray-500" id="file_input_help">PNG, JPG (doit faire exactement 600x400).</p>
   <div class="input_name">Prix : </div>
-  <select class= "catChoice" name="recip_name" required>
-      <option valeur="Peu Cher">Peu Cher</option>
-      <option valeur="Abordable">Abordable</option>
-      <option valeur="Cher">Cher</option>
-      <option valeur="Très Cher">Très Cher</option> 
+  <select class= "catChoice" name="recipePrice" required>
+      <option value="9">Peu Cher</option>
+      <option value="10">Abordable</option>
+      <option value="11">Cher</option>
+      <option value="12">Très Cher</option> 
   </select><br><br>
   <div class="input_name">Difficulté : </div>
-  <select class= "catChoice" name="recip_difficulty" required>
-    <option valeur="Très Facile">Très simple</option>
-    <option valeur="Abordable">Simple</option>
-    <option valeur="Cher">Moyen</option>
-    <option valeur="Très Cher">Difficile</option> 
+  <select class= "catChoice" name="recipeDifficulty" required>
+    <option value="1">Très facile</option>
+    <option value="2">Facile</option>
+    <option value="3">Moyen</option>
+    <option value="4">Difficile</option> 
   </select><br><br>
   <div class="input_name">Durée : </div>
-  <select class= "catChoice" name="recip_duration" required>
-    <option valeur="Très rapide">Très rapide</option>
-    <option valeur="Rapide">Rapide</option>
-    <option valeur="Assez long">Assez long</option>
-    <option valeur="Très Cher">Long</option> 
+  <select class= "catChoice" name="recipeDuration" required>
+    <option value="5">Rapide</option>
+    <option value="6">Normal</option>
+    <option value="7">Long</option>
+    <option value="8">Très Long</option> 
   </select><br><br>
-  <div class="input_name">Ingrédients : </div><textarea class= "catChoice" type="textarea" placeholder="Write something.." name="ingredients" rows="10" required></textarea><br><br>
+  <div class="input_name">Recette : </div><textarea class= "catChoice" type="textarea" placeholder="Write something.." name="description" rows="10" required></textarea><br><br>
+  <div class="input_name">Ingrédients : </div><textarea class= "catChoice" type="textarea" placeholder="Write something.." name="ingredient" rows="10" required></textarea><br><br>
   <button data-theme="mytheme" class="btn bg-secondary text-accent"><input type="submit" name="soumission" value="Submit"><br></button>
 </form>
 </div>
