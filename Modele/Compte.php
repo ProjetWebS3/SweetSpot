@@ -13,7 +13,7 @@ class Compte {
         $result = $query->fetchAll();
 
         if(count($result) > 0) {           
-            var_dump("L'adresse mail existe déja");   
+            echo ("L'adresse mail existe déja <br>");   
         } else {    
             $token = bin2hex(random_bytes(32));
             
@@ -26,6 +26,8 @@ class Compte {
             $query->bindValue(':token', $token, PDO::PARAM_STR);
             $query->execute();
             $_SESSION['token'] = $token;
+            $_SESSION['pseudo'] = $pseudo;
+            var_dump($_SESSION['pseudo']);
         }
     }
 
@@ -34,6 +36,7 @@ class Compte {
         $result = $query->fetchAll();
         if ($result[0]["Password"] == $password) {
             $_SESSION['token'] = $result[0]['token'];
+            $_SESSION['pseudo'] = $result[0]['token'];
         }
     }
 

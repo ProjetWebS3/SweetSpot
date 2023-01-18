@@ -15,6 +15,12 @@ final class ControleurDefaut
         
     }
 
+    public function bonjourAction()
+    {
+        echo ("Bonjour");
+        Vue::montrer('accueil/introduction');
+    }
+
     
 }
 ?>

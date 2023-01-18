@@ -1,6 +1,11 @@
 <div class="navbar bg-base-100" data-theme="mytheme">
   <div class="flex-1">
     <a href="/"class="btn btn-ghost normal-case text-xl">Sweet Spot</a>
+    <p>
+      bonjour
+    <?php //var_dump($_SESSION['pseudo']);
+    var_dump ($_SESSION['pseudo']); ?>
+    </p>
   </div>
   <div class="flex-none gap-2">
     <div class="form-control">
