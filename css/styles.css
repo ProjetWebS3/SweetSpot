@@ -3481,6 +3481,10 @@ html {
   font-size: 1.125rem;
 }
 
+.btn-wide {
+  width: 16rem;
+}
+
 .btn-square:where(.btn-xs) {
   height: 1.5rem;
   width: 1.5rem;
@@ -3788,6 +3792,14 @@ html {
   margin-bottom: 1.25rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -3904,6 +3916,10 @@ html {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .resize {
   resize: both;
 }
@@ -3940,12 +3956,26 @@ html {
   gap: 0.5rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
 
 .border {
   border-width: 1px;
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-gray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
 .bg-accent {
@@ -3963,9 +3993,24 @@ html {
   background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
 }
 
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+}
+
+.bg-gray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
 .p-2 {
@@ -3986,6 +4031,11 @@ html {
   line-height: 1.75rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -3993,6 +4043,10 @@ html {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .uppercase {
@@ -4011,6 +4065,36 @@ html {
 .text-warning {
   --tw-text-opacity: 1;
   color: hsl(var(--wa) / var(--tw-text-opacity));
+}
+
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-accent {
+  --tw-text-opacity: 1;
+  color: hsl(var(--a) / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -4121,12 +4205,91 @@ footer {
   max-height: 400px;
 }
 
+/* Admin Create Recipe Form*/
+
+.createRecipeFlex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addRecipForm {
+  background-color: bisque;
+  padding: 1%;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: black;
+}
+
+.inputRecipeName {
+  background-color: #ccc;
+  border-color: transparent;
+  width: 100%;
+}
+
+.catChoice {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 2px;
+}
+
+textarea {
+  width: 30em;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.inputImageRecipe {
+  background-color: #ccc;
+  width: 100%;
+}
+
+.addRecipForm {
+  width: 50%;
+  height: auto;
+}
+
+.addRecipForm>textarea {
+  width: 100%;
+}
+
 .table .hover\:hover:hovertr:hover th,
     .table .hover\:hover:hovertr:hover td,
     .table .hover\:hover:hovertr:nth-child(even):hover th,
     .table .hover\:hover:hovertr:nth-child(even):hover td {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:border-gray-600 {
+    --tw-border-opacity: 1;
+    border-color: rgb(75 85 99 / var(--tw-border-opacity));
+  }
+
+  .dark\:text-gray-400 {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .dark\:placeholder-gray-400::-moz-placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+  }
+
+  .dark\:placeholder-gray-400::placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+  }
 }
 
 @media (min-width: 1024px) {
