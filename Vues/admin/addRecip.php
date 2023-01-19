@@ -1,6 +1,6 @@
 <div class="createRecipeFlex">
 <h1 class="addRecipTitle">Créer une recette :</h1>
-<form class="addRecipForm" action="/admin/addRecipe" method="post">
+<form class="addRecipForm" action="/admin/addRecipe" method="post" enctype="multipart/form-data">
   <div class="input_name">Nom de la recette : </div><input class= "inputRecipeName" type="text" name="titre" required> <br><br>
   <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Recipe Image</label>
   <input class="inputImageRecipe block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="fileInput" type="file" name="image" onchange="checkFile()">
