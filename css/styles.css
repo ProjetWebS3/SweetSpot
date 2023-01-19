@@ -4260,6 +4260,8 @@ footer {
   max-height: 400px;
 }
 
+/* Search Bar Result*/
+
 .flexSearchRecettes {
   display: flex;
   flex-direction: row;
@@ -4274,6 +4276,18 @@ footer {
   margin: 1%;
   flex: 0 0 29%;
   max-height: 400px;
+}
+
+@media screen and (max-width: 1000px) {
+  .flexAllRecette {
+    flex: 0 0 47%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .flexAllRecette {
+    flex: 0 0 97%;
+  }
 }
 
 /* Admin Create Recipe Form*/
