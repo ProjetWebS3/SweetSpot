@@ -10,9 +10,8 @@
           <div class="border-4 border-black my-12 lg:my-0 lg:mx-12 rounded-3xl"></div>
           <div class="sm:text-xl text-base">
             <h1 class="titrePatisserie"><?= $A_vue['recette'][0]['titre'] ?></h1></br>
-            <p1>Temps de préparation : </p1>valeur</br></br>
             <p1>Cout : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
-            <p1>Durée : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
+            <p1>Temps de préparation : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
             <p1>Dificultée : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
             <p1>Note Globale : </p1><?= rating_stars($A_vue['recette'][0]['note']) ?>
           </div>
