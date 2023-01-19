@@ -11,10 +11,10 @@
           <div class="sm:text-xl text-base">
             <h1 class="titrePatisserie"><?= $A_vue['recette'][0]['titre'] ?></h1></br>
             <p1>Temps de préparation : </p1>valeur</br></br>
-            <p1>Cout : </p1>valeur</br></br>
-            <p1>Quantitée : </p1>valeur</br></br>
-            <p1>Dificultée : </p1>valeur</br></br>
-            nombre <p1>avis : </p1>*****
+            <p1>Cout : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
+            <p1>Durée : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
+            <p1>Dificultée : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
+            <p1>Note Globale : </p1><?= rating_stars($A_vue['recette'][0]['note']) ?>
           </div>
         </div>
         <div class="flex flex-col lg:flex-row">

@@ -2,10 +2,13 @@
 final class ControleurRecette
 {
     public function showAction($params) {
+      require_once("Modele/helpers.php");
       $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
       $model = new Recette($db);
+      $catModel = new Categorie($db);
+      $catDeLaRecette = $catModel->searchCategoryNameByRecipe($params[0]);
       $recette = $model->getRecette($params[0]);
-      Vue::montrer('recette/pageRecette', array('recette' => $recette));
+      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette));
     }
 
   public function searchAction()
