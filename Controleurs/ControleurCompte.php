@@ -12,6 +12,15 @@ final class ControleurCompte
         Vue::montrer('gestionCompte/connexion');
     }
 
+    public function deconnexionAction(){
+        /*var_dump("Vous êtes déconnecté");
+        die();*/
+        $_SESSION["pseudo"] = NULL;
+        $_SESSION["token"] = NULL;
+        header("Location: /");
+        /*?> <a  href="/" > </a>
+        <?php*/
+    }
     public function inscriptionAction(){
         Vue::montrer('gestionCompte/inscription');
     }

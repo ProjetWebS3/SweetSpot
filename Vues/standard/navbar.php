@@ -21,7 +21,11 @@
       </label>
       <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <?php 
+        if ($_SESSION['pseudo'] != NULL) {
+          echo "<li><a href= /compte/deconnexion> Logout </a></li>";
+        }
+        ?>
         <li><a href="/compte/connexion">Connexion</a></li>
       </ul>
     </div>
