@@ -57,18 +57,15 @@
   </form>
 </div>
 </div>
-
 <script>
   function checkFile() {
     var file = document.getElementById("fileInput").files[0];
-
     // check if file is an image
     if (!file.type.startsWith("image/")) {
       alert("Sélectionnez une image s'il vout plait");
       document.getElementById("fileInput").value = null;
       return;
     }
-
     // create an image object to check its dimensions
     var img = new Image();
     img.src = URL.createObjectURL(file);
@@ -80,5 +77,4 @@
         }
     };
   }
-
 </script>
