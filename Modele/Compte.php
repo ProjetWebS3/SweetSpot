@@ -35,11 +35,12 @@ class Compte {
         $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
         $stmt->execute(array($mail));
         $result = $stmt->fetchAll();
-        if ($result[0]["password"] == $password) {
+        if ($result[0]["password"] == $password && $password != "") {
             $_SESSION['token'] = $result[0]['token'];
             $_SESSION['pseudo'] = $result[0]['pseudo'];
+            $_SESSION['error_message'] = "";
         } else {
-            var_dump("Mauvais pseudo");
+            $_SESSION['error_message'] = "Mauvais mot de passe ou pseudo";
         }
 
     }

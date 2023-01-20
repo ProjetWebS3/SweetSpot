@@ -12,8 +12,9 @@
       </div>
       <div class="mb-6">
         <label class="mb-2 block text-sm font-bold text-gray-700" for="password">Mot de passe</label>
-        <input name="password" class="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-600 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none" id="password" type="password" placeholder="**********" />
-        <p class="text-xs italic text-red-600">Veuillez entrer un mot de passe.</p>
+        <input id="password" name="password" class="focus:shadow-outline mb-3 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none" id="password" type="password" placeholder="**********"/>
+        <p class='text-xs italic text-red-600'> <?=$_SESSION['error_message']?>  </p>
+
       </div>
       <div class="flex items-center justify-between">
         <input type="submit" value="Envoyer" style="border: 1px solid black;" class="focus:shadow-outline btn rounded bg-accent py-2 px-4 font-bold text-white focus:outline-none" />

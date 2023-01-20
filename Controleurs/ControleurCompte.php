@@ -13,15 +13,13 @@ final class ControleurCompte
     }
 
     public function deconnexionAction(){
-        /*var_dump("Vous êtes déconnecté");
-        die();*/
+        $_SESSION['error_message'] = "";
         $_SESSION["pseudo"] = NULL;
         $_SESSION["token"] = NULL;
         header("Location: /");
-        /*?> <a  href="/" > </a>
-        <?php*/
     }
     public function inscriptionAction(){
+        $_SESSION['error_message'] = "";
         Vue::montrer('gestionCompte/inscription');
     }
     
@@ -34,15 +32,18 @@ final class ControleurCompte
     }
 
     public function connecterAction(){
+        if($_GET['email'] == NULL || $_GET['password'] == NULL){
+            $_SESSION['error_message'] = "Veuillez remplir tous les champs";
+            //Vue::montrer('gestionCompte/connexion');
+        }
         $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
         $model = new Compte($db);
         $model->getCompteAction($_GET['email'], $_GET['password']);
-        header("Location: /");     
-        /*if ( $_SESSION['token'] == true) {
-            //var_dump("Bonjour, ", $_SESSION['login']['Pseudo']);
+        if($_SESSION['token'] == true){
+            header("Location: /");
         } else {
-            //var_dump("Vous n'êtes pas connecté");
-        }*/
+            Vue::montrer('gestionCompte/connexion');
+        }
     }
 
 }

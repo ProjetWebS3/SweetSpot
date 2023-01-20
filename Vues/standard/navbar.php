@@ -4,7 +4,7 @@
     <p>
       bonjour
     <?php //var_dump($_SESSION['pseudo']);
-    var_dump ($_SESSION['pseudo']); ?>
+    echo ($_SESSION['pseudo']); ?>
     </p>
   </div>
   <div class="flex-none gap-2">
