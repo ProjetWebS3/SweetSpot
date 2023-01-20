@@ -1,0 +1,89 @@
+<h1 class="text-3xl text-center">Créer une recette :</h1>
+<br />
+<div class="flex items-center justify-center p-12">
+<div class="mx-auto w-full max-w-[550px]">
+  <form action="add-recipe.php" method="POST">
+    <div class="mb-5">
+      <label for="name" class="mb-3 block text-base font-medium text-[#07074D]"> Nom de la recette </label>
+      <input type="text" name="name" id="name" placeholder="Gateau au chcolat" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+    </div> <br>
+   <form class="flex items-center space-x-6">
+      <label for="name" class="mb-3 block text-base font-medium text-[#07074D]"> Choisir une  image
+        <span class="sr-only">Choose a recipe picture</span>
+        <input type="file" class="block w-full text-sm text-slate-500
+        file:mr-4 file:py-2 file:px-4
+        file:rounded-full file:border-0
+        file:text-sm file:font-semibold
+        file:bg-violet-50 file:text-violet-700
+        hover:file:bg-violet-100
+        "/>
+        <p class="mt-1 text-xs text-gray-500" id="file_input_help">PNG, JPG (doit faire exactement 600x400).</p>
+      </label>
+  </form><br>
+    <div class="mb-5">
+      <p>Prix :</p>
+        <select class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" name="recip_price" required>
+          <option valeur="Peu Cher">Peu Cher</option>
+          <option valeur="Abordable">Abordable</option>
+          <option valeur="Cher">Cher</option>
+          <option valeur="Très Cher">Très Cher</option></select>
+          <br>
+    </div>
+    <div class="mb-5">
+      <p>Difficulté :</p>
+        <select class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" name="recip_difficulty" required>
+          <option valeur="Très simple">Très simple</option>
+          <option valeur="simple">Simple</option>
+          <option valeur="Moyen">Moyen</option>
+          <option valeur="Moyen">Difficile</option></select>
+          <br>
+    </div>
+    <div class="mb-5">
+      <p>Durée :</p>
+        <select class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" name="recip_duration" required>
+          <option valeur="Très rapide">Très rapide</option>
+          <option valeur="Rapide">Rapide</option>
+          <option valeur="Assez long">Assez long</option>
+          <option valeur="Long">Long</option></select>
+          <br>
+    </div><br><br>
+    <div class="mb-5">
+      <label for="message" class="mb-3 block text-base font-medium text-[#07074D]"> Ingrédients </label>
+      <textarea rows="4" name="message" id="message" placeholder="- ... &#10 - ... &#10 - ..."class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+    </div>
+    <div class="mb-5">
+      <label for="message" class="mb-3 block text-base font-medium text-[#07074D]"> Préparation </label>
+      <textarea rows="4" name="message" id="message" placeholder="1 ère Etape : &#10 ..." class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+    </div>
+    <div class="flex">
+        <button class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 m-1 text-base font-semibold text-white outline-none"><input type="submit" name="soumission" value="Soumettre"></button> 
+        
+      <div>
+        <button class="hover:shadow-form rounded-md bg-[#d62626] py-3 px-4 m-1 text-base font-semibold text-white outline-none"><input type="reset" name="Suppression" value="Supprimer"></button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+<script>
+  function checkFile() {
+    var file = document.getElementById("fileInput").files[0];
+
+    // check if file is an image
+    if (!file.type.startsWith("image/")) {
+      alert("Sélectionnez une image s'il vout plait");
+      return;
+    }
+
+    // create an image object to check its dimensions
+    var img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = function() {
+      // check if image has 600x400 size
+      if (img.width !== 600 || img.height !== 400) {
+        alert("L'image doit faire exactement 600x400px.");
+        }
+    };
+  }
+</script>
