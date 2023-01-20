@@ -9,8 +9,9 @@ class Compte {
 
     public function submitAction($pseudo, $mail, $password, $admin){
 
-        $query = $this->db->query("SELECT * FROM Compte WHERE Email = '$mail'");
-        $result = $query->fetchAll();
+        $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
+        $stmt->execute(array($mail));
+        $result = $stmt->fetchAll();
 
         if(count($result) > 0) {           
             echo ("L'adresse mail existe déja <br>");   
@@ -32,8 +33,9 @@ class Compte {
     }
 
     public function getCompteAction($mail, $password){
-        $query = $this->db->query("SELECT * FROM Compte WHERE Email = '$mail'");
-        $result = $query->fetchAll();
+        $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
+        $stmt->execute(array($mail));
+        $result = $stmt->fetchAll();
         if ($result[0]["password"] == $password) {
             $_SESSION['token'] = $result[0]['token'];
             $_SESSION['pseudo'] = $result[0]['pseudo'];
