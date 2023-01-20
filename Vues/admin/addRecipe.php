@@ -2,7 +2,7 @@
 <br />
 <div class="flex items-center justify-center p-12">
 <div class="mx-auto w-full max-w-[550px]">
-  <form class=addRecipForm" action="/admin/addRecipe" method="post" enctype="multipart/form-data">
+  <form class="bg-pink-50 p-10 rounded-md" action="/admin/addRecipe" method="post" enctype="multipart/form-data">
     <div class="mb-5">
       <label for="name" class="mb-3 block text-base font-medium text-[#07074D]"> Nom de la recette </label>
       <input type="text" name="titre" id="name" placeholder="Gateau au chocolat" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
@@ -53,7 +53,7 @@
       <label for="message" class="mb-3 block text-base font-medium text-[#07074D]"> Préparation </label>
       <textarea rows="4" name="ingredient" id="message" placeholder="1 ère Etape : &#10 ..." class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
     </div>
-    <button data-theme="mytheme" class="btn bg-secondary text-accent"><input type="submit" name="soumission" value="Submit"><br></button> 
+    <button class="btn bg-gray-400 text-white justify-center"><input type="submit" name="soumission" value="Submit"><br></button> 
   </form>
 </div>
 </div>
