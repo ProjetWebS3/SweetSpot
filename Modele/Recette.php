@@ -14,7 +14,6 @@ class Recette {
     }
 
     public function getCommentaire($params){
-        //$query = $this->db->query("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette=$params");
         $query = $this->db->query("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette=$params");
         $commentaire = $query->fetchAll();
         return $commentaire;
@@ -33,6 +32,7 @@ class Recette {
     }
     
     public function commenter($commentaire, $id_recette){   
+        var_dump($id_recette);
 
         $query = $this->db->prepare("INSERT INTO Commentaire (id_commentaire, id_compte, id_recette, commentaire, note) VALUES (:id_commentaire, :id_compte, :id_recette, :commentaire, :note);");
         $query->bindValue(':id_commentaire', '', PDO::PARAM_INT);

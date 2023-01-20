@@ -14,6 +14,7 @@ final class ControleurRecette
 
   public function searchAction()
   {
+
     require_once("Modele/helpers.php");
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Recette($db);
@@ -31,14 +32,11 @@ final class ControleurRecette
   }
       
   public function commenterAction($params){
-    var_dump($params[0]);
-    if($_SESSION['login'] == NULL){
-      //var_dump("Vous n'etes pas connecter");
+    if($_SESSION['token'] == NULL){
+      var_dump("Vous n'etes pas connecter");
     } else{
       $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
       $model = new Recette($db);
-      var_dump($_GET['commentaire'], $params[0]);
-      die();
       $model->commenter($_GET['commentaire'], $params[0]);
       header("Location: /Recette/show/$params[0]");
     }
