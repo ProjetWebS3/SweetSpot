@@ -13,8 +13,8 @@ class Compte {
         $stmt->execute(array($mail));
         $result = $stmt->fetchAll();
 
-        if(count($result) > 0) {           
-            echo ("L'adresse mail existe déja <br>");   
+        if(count($result) > 0) {    
+            $_SESSION['error_message'] = "L'adresse mail existe déja";   
         } else {    
             $token = bin2hex(random_bytes(32));
             

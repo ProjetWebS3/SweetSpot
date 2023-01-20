@@ -5,10 +5,12 @@ final class ControleurCompte
 {
     public function defautAction()
     {
+        $_SESSION['error_message'] = "";
         Vue::montrer('gestionCompte/inscription');
     }
 
     public function connexionAction(){
+        $_SESSION['error_message'] = "";
         Vue::montrer('gestionCompte/connexion');
     }
 
