@@ -16,7 +16,60 @@ for ($i = 0; $i < 3; $i++) {
 }
 ?>
 </div>
+<div data-theme ="mytheme" class = "bg-white">
+  <h2 class="text-2xl font-bold tracking-tight text-gray-900">Liste des catégories</h2>
+  </br>
+  <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Difficultés</h2>
 
+  <div class="grid grid-cols-4 gap-4 h-16 font-medium">
+    <button class="rounded-md bg-base-100 " type="button">
+      Très Facile
+    </button>
+    <button class="rounded-md bg-base-100 " type="button">
+      Facile
+    </button>
+    <button class="rounded-md bg-base-100 " type="button">
+      Moyen
+    </button>
+    <button class="rounded-md bg-base-100  " type="button">
+      Difficile
+    </button>
+  </div>
+  </br>
+
+  <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Coût</h2>
+  <div class="grid grid-cols-4 gap-4 h-16 font-medium">
+    <button class="rounded-md bg-secondary " type="button">
+      Peu cher
+    </button>
+    <button class="rounded-md bg-secondary basis-1/4" type="button">
+      Abordable
+    </button>
+    <button class="rounded-md bg-secondary basis-1/4" type="button">
+      Cher
+    </button>
+    <button class="rounded-md bg-secondary basis-1/4" type="button">
+      Très cher
+    </button>
+  </div>
+  </br>
+
+  <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Durée</h2>
+  <div class="grid grid-cols-4 gap-4 h-16 font-bold text-white">
+    <button class="rounded-md bg-accent" type="button">
+      Rapide
+    </button>
+    <button class="rounded-md bg-accent " type="button">
+      Normale
+    </button>
+    <button class="rounded-md bg-accent" type="button">
+      Moyenne
+    </button>
+    <button class="rounded-md bg-accent" type="button">
+      Longue
+    </button>
+  </div>
+</div> 
 
 <h2 class="text-xl my-5">Listes des catégories</h2>
 
