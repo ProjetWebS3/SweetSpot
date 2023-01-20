@@ -2,9 +2,10 @@
   <div class="flex-1">
     <a href="/"class="btn btn-ghost normal-case text-xl">Sweet Spot</a>
     <p>
-      bonjour
     <?php 
-    echo ($_SESSION['pseudo']); ?>
+    if($_SESSION['pseudo'] != NULL){
+      echo ("bonjour " . $_SESSION['pseudo']); 
+    }?>
     </p>
   </div>
   <div class="flex-none gap-2">

@@ -13,7 +13,7 @@
       </div>
       <div class="flex items-center justify-between">
         <input type="submit" value="Envoyer" style="border: 1px solid black;" class="focus:shadow-outline btn rounded bg-accent py-2 px-4 font-bold text-white focus:outline-none" />
-        <a class="inline-block align-baseline text-sm font-bold text-accent hover:text-accent-focus" href="/compte/inscription"> S'inscrire </a>
+        <a href="/compte/inscription" class="btn btn-ghost">S'inscrire</a>
       </div>
     </form>
   </div>
