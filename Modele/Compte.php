@@ -34,10 +34,13 @@ class Compte {
     public function getCompteAction($mail, $password){
         $query = $this->db->query("SELECT * FROM Compte WHERE Email = '$mail'");
         $result = $query->fetchAll();
-        if ($result[0]["Password"] == $password) {
+        if ($result[0]["password"] == $password) {
             $_SESSION['token'] = $result[0]['token'];
-            $_SESSION['pseudo'] = $result[0]['token'];
+            $_SESSION['pseudo'] = $result[0]['pseudo'];
+        } else {
+            var_dump("Mauvais pseudo");
         }
+
     }
 
 }
