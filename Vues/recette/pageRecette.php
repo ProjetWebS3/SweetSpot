@@ -33,6 +33,54 @@
 
 <br>
 
+<div class="w-full flex justify-center">
+  <form class="w-1/2">
+    <div class="bg-yellow-50 p-4 rounded-lg shadow-md">
+      <div class="text-center mb-4">
+        <label class="text-gray-700 font-medium">
+          Donnez votre avis!
+        </label>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-medium mb-2" for="review">
+          Avis
+        </label>
+        <textarea
+          class="bg-white p-2 rounded-lg w-full"
+          id="review"
+          name="review"
+          required
+        ></textarea>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-medium mb-2">
+          Note
+        </label>
+        <input type="range" min="1" max="5" value="3" class="range range-accent" step="0.5" />
+        <div class="w-full flex justify-between text-xs px-2 bg-red">
+          <span>1</span>
+          <span>|</span>
+          <span>2</span>
+          <span>|</span>
+          <span>3</span>
+          <span>|</span>
+          <span>4</span>
+          <span>|</span>
+          <span>5</span>
+        </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button class="bg-pink-50 text-gray-500 py-2 px-4 rounded-lg hover:bg-indigo-500">
+          Poster
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+
 <?php
 for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
 ?>
@@ -52,43 +100,6 @@ for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
 <?php
 }
 ?>
-
-<form>
-  <div class="bg-white p-4 rounded-lg shadow-md">
-    <div class="text-center mb-4">
-      <label class="text-gray-700 font-medium">
-        Review by <span class="text-indigo-600 font-medium">User Name</span>
-      </label>
-    </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 font-medium mb-2" for="review">
-        Review
-      </label>
-      <textarea
-        class="bg-gray-200 p-2 rounded-lg w-full"
-        id="review"
-        name="review"
-        required
-      ></textarea>
-    </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 font-medium mb-2">
-        Rating
-      </label>
-      
-
-      
-      </div>
-    </div>
-    <div class="text-center mt-4">
-      <button class="bg-pink-50 text-gray-500 py-2 px-4 rounded-lg hover:bg-indigo-500">
-        Submit Review
-      </button>
-    </div>
-  </div>
-</form>
-
-
 
 <form action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
     <input type="text" id="commentaire" name="commentaire" placeholder="Commentaire" class="input w-full max-w-xs"><br><br>
