@@ -1,8 +1,3 @@
-<p class="text-base-200 text-warning">
-  Bonjour
-<?= $_SESSION['pseudo'] ?> <br>
-</p>  
-
 <div class="bg-white" data-theme="mytheme">
   <div class="ori mx-auto my-10 w-full max-w-xs">
     <form class="mb-4 rounded-3xl bg-base-100 px-8 pt-6 pb-8 shadow-md" action="/Compte/connecter/">

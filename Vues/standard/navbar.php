@@ -3,7 +3,7 @@
     <a href="/"class="btn btn-ghost normal-case text-xl">Sweet Spot</a>
     <p>
       bonjour
-    <?php //var_dump($_SESSION['pseudo']);
+    <?php 
     echo ($_SESSION['pseudo']); ?>
     </p>
   </div>
@@ -24,9 +24,12 @@
         <?php 
         if ($_SESSION['pseudo'] != NULL) {
           echo "<li><a href= /compte/deconnexion> Logout </a></li>";
+        } else {
+          echo "<li><a href= /compte/inscription> Inscription </a></li>";
+          echo "<li><a href= /compte/connexion> Connexion </a></li>";
         }
         ?>
-        <li><a href="/compte/connexion">Connexion</a></li>
+        
       </ul>
     </div>
   </div>
