@@ -9,12 +9,18 @@ class Compte {
 
     public function submitAction($pseudo, $mail, $password, $admin){
 
+        if($pseudo == NULL || $mail == NULL || $password == NULL){
+            $_SESSION['error_message'] = "Veuillez remplir tous les champs";
+            return;
+        }
+
         $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
         $stmt->execute(array($mail));
         $result = $stmt->fetchAll();
 
         if(count($result) > 0) {    
-            $_SESSION['error_message'] = "L'adresse mail existe déja";   
+            $_SESSION['error_message'] = "L'adresse mail existe déja";
+            return; 
         } else {    
             $token = bin2hex(random_bytes(32));
             

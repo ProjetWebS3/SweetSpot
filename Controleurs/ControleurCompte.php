@@ -30,13 +30,18 @@ final class ControleurCompte
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Compte($db);
     $model->submitAction($_GET['pseudo'], $_GET['email'], $_GET['password'], 0);
-    header("Location: /");     
+    if($_SESSION['error_message'] != ""){
+        Vue::montrer('gestionCompte/inscription');
+    }else{
+        header("Location: /");     
+    }
     }
 
     public function connecterAction(){
         if($_GET['email'] == NULL || $_GET['password'] == NULL){
             $_SESSION['error_message'] = "Veuillez remplir tous les champs";
-            //Vue::montrer('gestionCompte/connexion');
+            Vue::montrer('gestionCompte/connexion');
+            return;
         }
         $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
         $model = new Compte($db);
