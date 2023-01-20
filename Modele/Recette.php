@@ -31,7 +31,9 @@ class Recette {
         return $recette;
     }
     
-    public function commenter($commentaire, $id_recette){   
+    public function commenter($commentaire, $id_recette, $note){
+
+        var_dump($note);
 
         $truc = $_SESSION['token'];
         $query2 = $this->db->query("SELECT * FROM `Compte` WHERE `token` = '$truc'"); 
@@ -42,7 +44,7 @@ class Recette {
         $query->bindValue(':id_compte', $id_compte[0]["id_compte"], PDO::PARAM_STR);
         $query->bindValue(':id_recette', $id_recette, PDO::PARAM_STR);
         $query->bindValue(':commentaire', $commentaire, PDO::PARAM_STR);
-        $query->bindValue(':note', 0, PDO::PARAM_BOOL);
+        $query->bindValue(':note', $note, PDO::PARAM_STR);
         $query->execute();
 
     }

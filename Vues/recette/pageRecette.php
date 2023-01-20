@@ -34,7 +34,7 @@
 <br>
 
 <div class="w-full flex justify-center">
-  <form class="w-1/2">
+  <form class="w-1/2 " action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
     <div class="bg-yellow-50 p-4 rounded-lg shadow-md">
       <div class="text-center mb-4">
         <label class="text-gray-700 font-medium">
@@ -48,7 +48,7 @@
         <textarea
           class="bg-white p-2 rounded-lg w-full"
           id="review"
-          name="review"
+          name="commentaire" 
           required
         ></textarea>
       </div>
@@ -56,7 +56,7 @@
         <label class="block text-gray-700 font-medium mb-2">
           Note
         </label>
-        <input type="range" min="1" max="5" value="3" class="range range-accent" step="0.5" />
+        <input type="range" name="note" min="1" max="5" value="3" class="range range-accent" step="0.5" />
         <div class="w-full flex justify-between text-xs px-2 bg-red">
           <span>1</span>
           <span>|</span>
@@ -70,7 +70,7 @@
         </div>
         </div>
         <div class="flex justify-center pt-8">
-        <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200">
+        <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200" type="submit">
           Poster
         </button>
         </div>
@@ -82,7 +82,7 @@
 <br>
 
 <?php
-for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
+for ($i = count($A_vue['commentaire']) -1 ; $i > 0; $i--) {
 ?>
   <div class="bg-pink-50 p-4 rounded-lg">
     <div class="flex items-center mb-4">
@@ -90,7 +90,7 @@ for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
       <div class="ml-4">
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
         <div class="flex items-center">
-          <p class="text-yellow-400 ml-2">5.0</p>
+          <p class="text-yellow-400 ml-2"><?= $A_vue['commentaire'][$i]['note'] ?></p>
         </div>
       </div>
     </div>
@@ -100,8 +100,3 @@ for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
 <?php
 }
 ?>
-
-<form action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
-    <input type="text" id="commentaire" name="commentaire" placeholder="Commentaire" class="input w-full max-w-xs"><br><br>
-    <input type="submit" value="Envoyer" style="border: 1px solid black;" class="btn btn-outline">
-</form>

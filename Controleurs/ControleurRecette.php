@@ -32,12 +32,13 @@ final class ControleurRecette
   }
       
   public function commenterAction($params){
+
     if($_SESSION['token'] == NULL){
       var_dump("Vous n'etes pas connecter");
     } else{
       $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
       $model = new Recette($db);
-      $model->commenter($_GET['commentaire'], $params[0]);
+      $model->commenter($_GET['commentaire'], $params[0], $_GET['note']);
       header("Location: /Recette/show/$params[0]");
     }
   }
