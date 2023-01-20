@@ -53,6 +53,43 @@ for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
 }
 ?>
 
+<form>
+  <div class="bg-white p-4 rounded-lg shadow-md">
+    <div class="text-center mb-4">
+      <label class="text-gray-700 font-medium">
+        Review by <span class="text-indigo-600 font-medium">User Name</span>
+      </label>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium mb-2" for="review">
+        Review
+      </label>
+      <textarea
+        class="bg-gray-200 p-2 rounded-lg w-full"
+        id="review"
+        name="review"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium mb-2">
+        Rating
+      </label>
+      
+
+      
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <button class="bg-pink-50 text-gray-500 py-2 px-4 rounded-lg hover:bg-indigo-500">
+        Submit Review
+      </button>
+    </div>
+  </div>
+</form>
+
+
+
 <form action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
     <input type="text" id="commentaire" name="commentaire" placeholder="Commentaire" class="input w-full max-w-xs"><br><br>
     <input type="submit" value="Envoyer" style="border: 1px solid black;" class="btn btn-outline">
