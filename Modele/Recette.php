@@ -32,11 +32,14 @@ class Recette {
     }
     
     public function commenter($commentaire, $id_recette){   
-        var_dump($id_recette);
+
+        $truc = $_SESSION['token'];
+        $query2 = $this->db->query("SELECT * FROM `Compte` WHERE `token` = '$truc'"); 
+        $id_compte = $query2->fetchAll();
 
         $query = $this->db->prepare("INSERT INTO Commentaire (id_commentaire, id_compte, id_recette, commentaire, note) VALUES (:id_commentaire, :id_compte, :id_recette, :commentaire, :note);");
         $query->bindValue(':id_commentaire', '', PDO::PARAM_INT);
-        $query->bindValue(':id_compte', $_SESSION['login']['id_compte'], PDO::PARAM_STR);
+        $query->bindValue(':id_compte', $id_compte[0]["id_compte"], PDO::PARAM_STR);
         $query->bindValue(':id_recette', $id_recette, PDO::PARAM_STR);
         $query->bindValue(':commentaire', $commentaire, PDO::PARAM_STR);
         $query->bindValue(':note', 0, PDO::PARAM_BOOL);
