@@ -40,7 +40,7 @@
 
 <div class="bg-pink-50 p-4 rounded-lg shadow-md">
   <div class="flex items-center mb-4">
-    <img src="http://localhost:5000/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
+    <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
     <div class="ml-4">
       <h3 class="text-lg font-medium">Roger Dauber</h3>
       <div class="flex items-center">
