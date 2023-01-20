@@ -69,11 +69,11 @@
           <span>5</span>
         </div>
         </div>
-      </div>
-      <div class="text-center mt-4">
-        <button class="bg-pink-50 text-gray-500 py-2 px-4 rounded-lg hover:bg-indigo-500">
+        <div class="flex justify-center pt-8">
+        <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200">
           Poster
         </button>
+        </div>
       </div>
     </div>
   </form>
