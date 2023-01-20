@@ -82,7 +82,7 @@
 <br>
 
 <?php
-for ($i = count($A_vue['commentaire']) -1 ; $i > 0; $i--) {
+for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
   <div class="bg-pink-50 p-4 rounded-lg">
     <div class="flex items-center mb-4">

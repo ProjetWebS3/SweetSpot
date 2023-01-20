@@ -30,14 +30,14 @@ final class ControleurCompte
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Compte($db);
     $model->submitAction($_GET['pseudo'], $_GET['email'], $_GET['password'], 0);
-    Vue::montrer('gestionCompte/Inscription');
+    header("Location: /");     
     }
 
     public function connecterAction(){
         $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
         $model = new Compte($db);
         $model->getCompteAction($_GET['email'], $_GET['password']);
-        Vue::montrer('gestionCompte/Connexion');        
+        header("Location: /");     
         /*if ( $_SESSION['token'] == true) {
             //var_dump("Bonjour, ", $_SESSION['login']['Pseudo']);
         } else {

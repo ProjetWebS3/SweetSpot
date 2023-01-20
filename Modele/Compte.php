@@ -28,7 +28,6 @@ class Compte {
             $query->execute();
             $_SESSION['token'] = $token;
             $_SESSION['pseudo'] = $pseudo;
-            var_dump($_SESSION['pseudo']);
         }
     }
 
