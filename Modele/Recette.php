@@ -13,6 +13,13 @@ class Recette {
         return $recette;
     }
 
+    public function getCommentaire($params){
+        //$query = $this->db->query("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette=$params");
+        $query = $this->db->query("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette=$params");
+        $commentaire = $query->fetchAll();
+        return $commentaire;
+    }
+
     public function getRecette($id_recette){
         $query = $this->db->query("SELECT * FROM `Recette` WHERE `id_recette` = $id_recette");
         $recette = $query->fetchAll();

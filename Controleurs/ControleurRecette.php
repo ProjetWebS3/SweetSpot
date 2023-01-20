@@ -8,7 +8,8 @@ final class ControleurRecette
       $catModel = new Categorie($db);
       $catDeLaRecette = $catModel->searchCategoryNameByRecipe($params[0]);
       $recette = $model->getRecette($params[0]);
-      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette));
+      $commentaire = $model->getCommentaire($params[0]);
+      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire));
     }
 
   public function searchAction()
