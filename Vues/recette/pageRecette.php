@@ -37,9 +37,19 @@
   echo "<li><a href= /compte/deconnexion> Logout </a></li>";
 }*/
 ?>
-<p ><?= $A_vue['commentaire'][0]['commentaire'] ?>  </p>
 
-
+<div class="bg-pink-50 p-4 rounded-lg shadow-md">
+  <div class="flex items-center mb-4">
+    <img src="http://localhost:5000/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
+    <div class="ml-4">
+      <h3 class="text-lg font-medium">Roger Dauber</h3>
+      <div class="flex items-center">
+        <p class="text-yellow-400 ml-2">5.0</p>
+      </div>
+    </div>
+  </div>
+  <p class="text-gray-600"><?= $A_vue['commentaire'][0]['commentaire'] ?></p>
+</div>
 
 
 <form action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
