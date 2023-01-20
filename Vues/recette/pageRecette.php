@@ -13,7 +13,7 @@
           <p1>Cout : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
           <p1>Temps de préparation : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
           <p1>Dificultée : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
-          <p1>Note Globale : </p1><?= rating_stars($A_vue['recette'][0]['note']) ?>
+          <p1>Note Globale : </p1><p1 class="text-yellow-400"><?= rating_stars($A_vue['recette'][0]['note']) ?></p1>
         </div>
       </div>
       <div class="flex flex-col lg:flex-row">
