@@ -8,35 +8,38 @@ class Recette {
     }
 
     public function get3Recettes() {
-        $query = $this->db->query("SELECT `id_recette`,`titre`,`image`,`note` FROM `Recette` ORDER BY RAND() LIMIT 3");
-        $recette = $query->fetchAll();
+        $stmt = $this->db->prepare("SELECT `id_recette`,`titre`,`image`,`note` FROM `Recette` ORDER BY RAND() LIMIT 3");
+        $stmt->execute();
+        $recette = $stmt->fetchAll();
         return $recette;
     }
 
     public function getCommentaire($params){
-        $query = $this->db->query("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette=$params");
-        $commentaire = $query->fetchAll();
+        $stmt = $this->db->prepare("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette = ?");
+        $stmt->execute(array($params));
+        $commentaire = $stmt->fetchAll();
         return $commentaire;
     }
 
     public function getRecette($id_recette){
-        $query = $this->db->query("SELECT * FROM `Recette` WHERE `id_recette` = $id_recette");
-        $recette = $query->fetchAll();
+        $stmt = $this->db->prepare("SELECT * FROM `Recette` WHERE `id_recette` = ?");
+        $stmt->execute(array($id_recette));
+        $recette = $stmt->fetchAll();
         return $recette;
     }
 
     public function searchRecette($search){
-        $query = $this->db->query("SELECT * FROM `Recette` WHERE `titre` LIKE '%$search%'");
-        $recette = $query->fetchAll();
+        $stmt = $this->db->prepare("SELECT * FROM `Recette` WHERE `titre` LIKE ?");
+        $stmt->execute(array("%$search%"));
+        $recette = $stmt->fetchAll();
         return $recette;
     }
     
     public function commenter($commentaire, $id_recette, $note){
 
-        var_dump($note);
-
         $truc = $_SESSION['token'];
-        $query2 = $this->db->query("SELECT * FROM `Compte` WHERE `token` = '$truc'"); 
+        $query2 = $this->db->prepare("SELECT * FROM `Compte` WHERE `token` = :token");
+        $query2->execute(array(':token' => $truc));
         $id_compte = $query2->fetchAll();
 
         $query = $this->db->prepare("INSERT INTO Commentaire (id_commentaire, id_compte, id_recette, commentaire, note) VALUES (:id_commentaire, :id_compte, :id_recette, :commentaire, :note);");
