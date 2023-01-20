@@ -32,25 +32,26 @@
 </html>
 
 <br>
-<?php 
-/*if ($_SESSION['pseudo'] != NULL) {
-  echo "<li><a href= /compte/deconnexion> Logout </a></li>";
-}*/
-?>
 
-<div class="bg-pink-50 p-4 rounded-lg shadow-md">
-  <div class="flex items-center mb-4">
-    <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
-    <div class="ml-4">
-      <h3 class="text-lg font-medium">Roger Dauber</h3>
-      <div class="flex items-center">
-        <p class="text-yellow-400 ml-2">5.0</p>
+<?php
+for ($i = 0; $i < count($A_vue['commentaire']); $i++) {
+?>
+  <div class="bg-pink-50 p-4 rounded-lg">
+    <div class="flex items-center mb-4">
+      <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
+      <div class="ml-4">
+        <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
+        <div class="flex items-center">
+          <p class="text-yellow-400 ml-2">5.0</p>
+        </div>
       </div>
     </div>
+    <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>
   </div>
-  <p class="text-gray-600"><?= $A_vue['commentaire'][0]['commentaire'] ?></p>
-</div>
-
+  <br>
+<?php
+}
+?>
 
 <form action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
     <input type="text" id="commentaire" name="commentaire" placeholder="Commentaire" class="input w-full max-w-xs"><br><br>
