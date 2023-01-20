@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div class="bg-white" data-theme="mytheme">
   <div class="ori mx-auto my-10 w-full max-w-xs">
     <form class="mb-4 rounded-3xl bg-base-100 px-8 pt-6 pb-8 shadow-md" action="/Compte/inscrire/" method="get">
       <div class="mb-4">
