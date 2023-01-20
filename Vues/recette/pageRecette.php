@@ -17,12 +17,12 @@
         </div>
       </div>
       <div class="flex flex-col lg:flex-row">
-        <div class="bg-yellow-100 rounded-3xl p-10 m-10 lg:w-2/3 w-auto">
+        <div class="bg-yellow-50 rounded-3xl p-10 m-10 lg:w-2/3 w-auto">
           <p1>
               <?= $A_vue['recette'][0]['ingredient'] ?>
           </p1>
         </div>
-        <div class="bg-yellow-100 rounded-3xl p-10 m-10">
+        <div class="bg-yellow-50 rounded-3xl p-10 m-10">
           <h1 class="text-center">Préparation</h1>
           <p class="text-base-200 text-black"><?= $A_vue['recette'][0]['description'] ?></p>
         </div>
