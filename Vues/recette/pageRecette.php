@@ -9,13 +9,13 @@
     <p1>Note Globale : </p1><p1 class="text-yellow-400"><?= rating_stars($A_vue['recette'][0]['note']) ?></p1>
   </div>
 </div>
-<div class="flex flex-col lg:flex-row">
-  <div class="bg-yellow-50 rounded-3xl p-10 m-10 lg:w-2/3 w-auto">
+<div  class="flex flex-col lg:flex-row">
+  <div data-theme="mytheme" class="bg-base-100 rounded-3xl p-10 m-10 lg:w-2/3 w-auto">
     <p1>
         <?= $A_vue['recette'][0]['ingredient'] ?>
     </p1>
   </div>
-  <div class="bg-yellow-50 rounded-3xl p-10 m-10">
+  <div data-theme="mytheme" class="bg-base-100 rounded-3xl p-10 m-10">
     <h1 class="text-center">Préparation</h1>
     <p class="text-base-200 text-black"><?= $A_vue['recette'][0]['description'] ?></p>
   </div>
@@ -26,7 +26,7 @@
 
 <div class="w-full flex justify-center">
   <form class="w-1/2 " action="/Recette/commenter/<?= $A_vue['recette'][0]['id_recette'] ?>" method=get>
-    <div class="bg-yellow-50 p-4 rounded-lg shadow-md">
+    <div data-theme="mytheme" class="bg-base-100 p-4 rounded-lg shadow-md">
       <div class="text-center mb-4">
         <label class="text-gray-700 font-medium">
           Donnez votre avis!
