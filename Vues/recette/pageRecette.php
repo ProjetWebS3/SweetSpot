@@ -1,7 +1,7 @@
 <h1 class="text-center text-6xl mt-6"><?= $A_vue['recette'][0]['titre'] ?></h1>
 <div class="flex flex-col lg:flex-row m-8">
   <img class="lg:w-3/5 rounded-3xl" src="data:image/png;base64,<?= base64_encode($A_vue['recette'][0]['image']) ?>" alt="<?= $A_vue['recette'][0]['titre'] ?>">
-  <div class="border-4 border-black my-12 lg:my-0 lg:mx-12 rounded-3xl"></div>
+  <div class="border-2 border-black my-12 lg:my-0 lg:mx-12 rounded-3xl"></div>
   <div class="sm:text-2xl text-base">
     <p1>Cout : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
     <p1>Temps de préparation : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
@@ -20,7 +20,7 @@
     <p class="text-base-200 text-black"><?= $A_vue['recette'][0]['description'] ?></p>
   </div>
 </div>
-<div class="border-4 border-black my-12 mx-12 rounded-3xl"></div>
+<div class="border-2 border-black my-12 mx-12 rounded-3xl"></div>
 
 <br>
 
@@ -81,7 +81,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
       <div class="ml-4">
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
         <div class="flex items-center">
-          <p class="text-yellow-400 ml-2"><?= $A_vue['commentaire'][$i]['note'] ?></p>
+          <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaire'][$i]['note']) ?></p>
         </div>
       </div>
     </div>
