@@ -24,13 +24,15 @@ class Compte {
         } else {    
             $token = bin2hex(random_bytes(32));
             
-            $query = $this->db->prepare("INSERT INTO Compte (id_compte, pseudo, email, password, admin, token) VALUES (:id_compte, :pseudo, :email, :password, :admin, :token);");
+            $query = $this->db->prepare("INSERT INTO Compte (id_compte, pseudo, email, password, admin, token, date_creation, date_connexion) VALUES (:id_compte, :pseudo, :email, :password, :admin, :token, :date_creation, :date_connexion);");
             $query->bindValue(':id_compte', '', PDO::PARAM_INT);
             $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
             $query->bindValue(':email', $mail, PDO::PARAM_STR);
             $query->bindValue(':password', $password, PDO::PARAM_STR);
             $query->bindValue(':admin', $admin, PDO::PARAM_BOOL);
             $query->bindValue(':token', $token, PDO::PARAM_STR);
+            $query->bindValue(':date_creation', date("Y-m-d H:i:s"), PDO::PARAM_STR);
+            $query->bindValue(':date_connexion', date("Y-m-d H:i:s"), PDO::PARAM_STR);
             $query->execute();
             $_SESSION['token'] = $token;
             $_SESSION['pseudo'] = $pseudo;
@@ -38,6 +40,16 @@ class Compte {
     }
 
     public function getCompteAction($mail, $password){
+
+        $dateConnexion = date("Y-m-d H:i:s");
+
+        $stmt2 = $this->db->prepare("UPDATE Compte SET date_connexion = ?  WHERE email=?");
+        $stmt2->execute(array($dateConnexion,$mail));
+
+
+        /*$stmt2 = $this->db->prepare("UPDATE Compte SET date_connexion = '?'  WHERE email=$mail");
+        $stmt2->execute(array(date("Y-m-d H:i:s")));*/
+
         $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
         $stmt->execute(array($mail));
         $result = $stmt->fetchAll();
