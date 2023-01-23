@@ -71,4 +71,9 @@ class Recette {
 
     }
 
+    public function modifierCommentaire($id_compte, $commentaire){
+        $stmt = $this->db->prepare("UPDATE Commentaire SET commentaire = ?  WHERE id_commentaire=?");
+        $stmt->execute(array($commentaire,$id_compte));
+    }
+
 }

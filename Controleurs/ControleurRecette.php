@@ -42,5 +42,13 @@ final class ControleurRecette
       header("Location: /Recette/show/$params[0]");
     }
   }
+
+  public function modifierAction($param){
+    $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+    $model = new Recette($db);
+    $model->modifierCommentaire($param[1], $_GET['nouvelCommentaire']);
+    header("Location: /Recette/show/$param[0]");
+  }
+  
 }
 ?>
