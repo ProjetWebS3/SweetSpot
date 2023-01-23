@@ -42,12 +42,13 @@ class Recette {
         $query2->execute(array(':token' => $truc));
         $id_compte = $query2->fetchAll();
 
-        $query = $this->db->prepare("INSERT INTO Commentaire (id_commentaire, id_compte, id_recette, commentaire, note) VALUES (:id_commentaire, :id_compte, :id_recette, :commentaire, :note);");
+        $query = $this->db->prepare("INSERT INTO Commentaire (id_commentaire, id_compte, id_recette, commentaire, note, date) VALUES (:id_commentaire, :id_compte, :id_recette, :commentaire, :note, :date);");
         $query->bindValue(':id_commentaire', '', PDO::PARAM_INT);
         $query->bindValue(':id_compte', $id_compte[0]["id_compte"], PDO::PARAM_STR);
         $query->bindValue(':id_recette', $id_recette, PDO::PARAM_STR);
         $query->bindValue(':commentaire', $commentaire, PDO::PARAM_STR);
         $query->bindValue(':note', $note, PDO::PARAM_STR);
+        $query->bindValue(':date', date("Y-m-d"), PDO::PARAM_STR);
         $query->execute();
 
     }

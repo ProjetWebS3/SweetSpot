@@ -83,6 +83,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
         <div class="flex items-center">
           <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaire'][$i]['note']) ?></p>
         </div>
+        <p class="text-gray-600" >  A commenté le  <?= $A_vue['commentaire'][$i]['date'] ?> </p>
       </div>
     </div>
     <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>
