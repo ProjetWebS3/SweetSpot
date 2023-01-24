@@ -13,7 +13,6 @@ for ($i = 0; $i < 3; $i++) {
         <div class="card-actions justify-end">
           <a href="/recette/show/<?= $A_vue['recette'][$i]['id_recette'] ?>" class="btn btn-accent bg-secondary">Recette</a> 
         </div>
-      
     </div>
   </div>
 <?php
@@ -24,7 +23,6 @@ for ($i = 0; $i < 3; $i++) {
   <h2 class="text-2xl font-bold tracking-tight text-gray-900">Liste des catégories</h2>
   </br>
   <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Difficultés</h2>
-
   <div class="grid grid-cols-4 gap-4 h-16 font-medium">
     <?php 
     for ($i = 0; $i < 4; $i++) { ?>
@@ -34,7 +32,6 @@ for ($i = 0; $i < 3; $i++) {
     <?php } ?>
   </div>
   </br>
-
   <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Coût</h2>
   <div class="grid grid-cols-4 gap-4 h-16 font-medium">
     <?php 
@@ -45,9 +42,7 @@ for ($i = 0; $i < 3; $i++) {
     <?php } ?>
   </div>
   </br>
-
   <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Durée</h2>
-
     <div class="grid grid-cols-4 gap-4 h-16 font-bold text-white">
       <?php 
       for ($i = 4; $i < 8; $i++) { ?>
@@ -56,5 +51,4 @@ for ($i = 0; $i < 3; $i++) {
         </button>
       <?php } ?>
     </div>
-
 </div> 
