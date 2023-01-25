@@ -33,6 +33,14 @@ class Categorie
         $requete->execute();
     }
 
+    public function getCategoriesByRecipeId($id_recette) {
+        $sql = "SELECT * FROM RecetteCategorie WHERE id_recette=:id_recette ORDER BY id_type";
+        $requete = $this->db->prepare($sql);
+        $requete->bindParam(':id_recette', $id_recette);
+        $requete->execute();
+        return $requete->fetchAll();
+    }
+
     public function searchCategoryNameByRecipe($id_recette) {
         $sql = "SELECT nom,type FROM RecetteCategorie, TypeCategorie WHERE RecetteCategorie.id_type=TypeCategorie.id_type AND RecetteCategorie.id_recette=:id_recette ORDER BY type";
         $requete = $this->db->prepare($sql);

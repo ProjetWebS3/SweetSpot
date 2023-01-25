@@ -30,8 +30,8 @@
     <div class="mb-5">
       <p>Difficulté :</p>
         <select class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" name="recipeDifficulty" required>
-          <option value="1">Très simple</option>
-          <option value="2">Simple</option>
+          <option value="1">Très facile</option>
+          <option value="2">Facile</option>
           <option value="3">Moyen</option>
           <option value="4">Difficile</option></select>
           <br>
@@ -39,10 +39,10 @@
     <div class="mb-5">
       <p>Durée :</p>
         <select class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" name="recipeDuration" required>
-          <option value="5">Très rapide</option>
-          <option value="6">Rapide</option>
-          <option value="7">Assez long</option>
-          <option value="8">Long</option></select>
+          <option value="5">Rapide</option>
+          <option value="6">Normal</option>
+          <option value="7">Long</option>
+          <option value="8">Très long</option></select>
           <br>
     </div><br><br>
     <div class="mb-5">
