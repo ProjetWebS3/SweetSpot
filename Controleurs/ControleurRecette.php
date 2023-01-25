@@ -48,7 +48,8 @@ final class ControleurRecette
     } else{
       $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
       $model = new Recette($db);
-      $model->commenter($_GET['commentaire'], $params[0], $_GET['note']);
+      $model->commenter($_GET['commentaire'], $params[0], $_GET['note']); 
+      $_SESSION['scroll_position'] = 0;
       header("Location: /Recette/show/$params[0]");
     }
   }
@@ -57,11 +58,14 @@ final class ControleurRecette
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Recette($db);
     $model->validerCommentaire($param[1], $_GET['nouvelCommentaire']);
+    $_SESSION['modifier'] = -1;
+    $_SESSION['scroll_position'] = $_SERVER['HTTP_USER_AGENT'];
     header("Location: /Recette/show/$param[0]");
   }
 
   public function modifierAction($param){
     //param -> id_commentaire
+    $_SESSION['scroll_position'] = $_SERVER['HTTP_USER_AGENT'];
     $_SESSION['modifier'] = $param[1];
     header("Location: /Recette/show/$param[0]");
   }

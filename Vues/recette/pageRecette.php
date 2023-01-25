@@ -1,3 +1,10 @@
+<?php
+
+$scroll_position = $_SESSION['scroll_position'];
+echo "<script>window.scrollTo(0, $scroll_position);</script>";
+
+?>
+
 <h1 class="text-center text-6xl mt-6"><?= $A_vue['recette'][0]['titre'] ?></h1>
 <div class="flex flex-col lg:flex-row m-8">
   <img class="lg:w-3/5 rounded-3xl" src="data:image/png;base64,<?= base64_encode($A_vue['recette'][0]['image']) ?>" alt="<?= $A_vue['recette'][0]['titre'] ?>">
@@ -88,36 +95,31 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
         <p class="text-gray-600" >  A commenté le  <?= $A_vue['commentaire'][$i]['date'] ?> </p>
       </div>
     </div>
-    <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>
+
 
     <?php 
-    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){?>
-
-      <?php
-      echo $_SESSION['modifier'];
-      
-        if ( $_SESSION['modifier'] == $A_vue['commentaire'][$i]['id_commentaire']){?>
+    //Si l'utilisateur a déjà commenté la recette
+    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){
+        //Si l'utilisateur a cliqué sur le bouton modifier
+        if ( $_SESSION['modifier'] == $A_vue['commentaire'][$i]['id_commentaire']){
+    ?>
           <form class="w-1/2 " action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
-          <button> Valider  : </button>
-          <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
+          <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50 border-2 border-red-600">
+          <br>
+          <button class="bg-white text-gray-500 py-8 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
           </form>
       <?php 
       } else {
-      ?>          
-      <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
-      <button> Modifier  : </button>
-      <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
-      </form>
-
-      <?php 
-      } ?>
+      ?>   
       
+      <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
       <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
-      <button> Modifier  : </button>
-      <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
+      <button class="bg-white text-gray-500 py-8 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
       </form>
-    <?php 
+      <?php  
+      } 
     }?>
+
 
   </div>
   <br>
