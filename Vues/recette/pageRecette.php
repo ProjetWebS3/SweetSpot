@@ -75,10 +75,21 @@
 <?php
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
-<form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"] ?>" method=get>
-<input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
-<button> Modifier </button>
-</form>
+<p>
+<?php 
+    echo ($A_vue['aCommenté'][$i] . $A_vue['commentaire'][$i]['id_commentaire']);
+    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){?>
+
+      <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"] ?>" method=get>
+      <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
+      <button> Modifier </button>
+      </form>
+
+    
+    <?php 
+    }?>
+</p>
+
   <div class="bg-pink-50 p-4 rounded-lg">
     <div class="flex items-center mb-4">
       <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">

@@ -98,4 +98,18 @@ class Recette {
         $stmt->execute(array($id_recette));
     }
 
+    public function aCommenté($id_compte, $id_commentaire){
+
+        $stmt = $this->db->prepare("SELECT * FROM Compte WHERE token = ?");
+        $stmt->execute(array($_SESSION['token']));
+        $resultat = $stmt->fetchAll();
+        if($resultat[0]['id_compte'] == $id_compte){
+            return $id_commentaire;
+        }
+        else {
+            return -1;
+        }
+        
+    }
+
 }

@@ -7,9 +7,19 @@ final class ControleurRecette
       $model = new Recette($db);
       $catModel = new Categorie($db);
       $catDeLaRecette = $catModel->searchCategoryNameByRecipe($params[0]);
+
       $recette = $model->getRecette($params[0]);
+      
       $commentaire = $model->getCommentaire($params[0]);
-      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire));
+
+    $aCommenté = array();
+
+    for ($i = 0 ; $i < count($commentaire); $i++) {
+      $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
+      array_push($aCommenté, $tmp);
+    }
+    var_dump($aCommenté);
+      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'aCommenté' => $aCommenté));
     }
 
   public function searchAction()
