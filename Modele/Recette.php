@@ -71,6 +71,21 @@ class Recette {
 
     }
 
+    public function alterRecipeWithCat($id_recette, $titre, $description, $ingredient, $recipeDuraction, $recipePrice,$recipeDifficulty) {
+        $query = $this->db->prepare("UPDATE Recette SET titre=:titre, description=:description, ingredient=:ingredient WHERE id_recette=:id_recette;");
+        $description = str_replace("\n", "<br>", $description);
+        $ingredient = str_replace("\n", "<br>", $ingredient);
+        $query->bindValue(':id_recette', $id_recette, PDO::PARAM_INT);
+        $query->bindValue(':titre', $titre, PDO::PARAM_STR);
+        $query->bindValue(':description', $description, PDO::PARAM_STR);
+        $query->bindValue(':ingredient', $ingredient, PDO::PARAM_STR);
+        $query->execute();
+        $modelCat = new Categorie($this->db);
+        $modelCat->alterCategorie($id_recette, $recipeDuraction,5,8);
+        $modelCat->alterCategorie($id_recette, $recipePrice,9,12);
+        $modelCat->alterCategorie($id_recette, $recipeDifficulty,1,4);
+    }
+
     public function modifierCommentaire($id_compte, $commentaire){
         $stmt = $this->db->prepare("UPDATE Commentaire SET commentaire = ?  WHERE id_commentaire=?");
         $stmt->execute(array($commentaire,$id_compte));

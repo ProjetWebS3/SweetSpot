@@ -33,6 +33,16 @@ class Categorie
         $requete->execute();
     }
 
+    public function alterCategorie($id_recette, $id_type, $min, $max) {
+        $sql = "UPDATE RecetteCategorie SET id_type=:id_type WHERE id_recette=:id_recette AND id_type BETWEEN :min AND :max;";
+        $requete = $this->db->prepare($sql);
+        $requete->bindParam(':id_recette', $id_recette);
+        $requete->bindParam(':id_type', $id_type);
+        $requete->bindParam(':min', $min);
+        $requete->bindParam(':max', $max);
+        $requete->execute();
+    }
+
     public function getCategoriesByRecipeId($id_recette) {
         $sql = "SELECT * FROM RecetteCategorie WHERE id_recette=:id_recette ORDER BY id_type";
         $requete = $this->db->prepare($sql);
