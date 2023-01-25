@@ -9,7 +9,8 @@ if(!isset($A_vue['recettes'][0]['titre'])) {?>
 <?php
 }
 $i = 0;
-while(isset($A_vue['recettes'][$i]['titre'])) { 
+while(isset($A_vue['recettes'][$i]['titre'])) {
+  $_SESSION['modifier'] = -1;
 ?>
         <div data-theme="mytheme" class="flexAllRecette card card-compact w-96 bg-accent shadow-xl" >
         <figure><img src="data:image/png;base64,<?= base64_encode($A_vue['recettes'][$i]['image']) ?>" alt="<?= $A_vue['recettes'][$i]['titre'] ?>"></figure>

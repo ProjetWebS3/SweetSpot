@@ -86,7 +86,8 @@ class Recette {
         $modelCat->alterCategorie($id_recette, $recipeDifficulty,1,4);
     }
 
-    public function modifierCommentaire($id_compte, $commentaire){
+    public function validerCommentaire($id_compte, $commentaire){
+
         $stmt = $this->db->prepare("UPDATE Commentaire SET commentaire = ?  WHERE id_commentaire=?");
         $stmt->execute(array($commentaire,$id_compte));
     }
@@ -104,6 +105,7 @@ class Recette {
         $stmt->execute(array($_SESSION['token']));
         $resultat = $stmt->fetchAll();
         if($resultat[0]['id_compte'] == $id_compte){
+
             return $id_commentaire;
         }
         else {

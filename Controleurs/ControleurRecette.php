@@ -18,6 +18,7 @@ final class ControleurRecette
       $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
       array_push($aCommenté, $tmp);
     }
+
       Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'aCommenté' => $aCommenté));
     }
 
@@ -52,12 +53,16 @@ final class ControleurRecette
     }
   }
 
-  
-
-  public function modifierAction($param){
+  public function validerAction($param){
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Recette($db);
-    $model->modifierCommentaire($param[1], $_GET['nouvelCommentaire']);
+    $model->validerCommentaire($param[1], $_GET['nouvelCommentaire']);
+    header("Location: /Recette/show/$param[0]");
+  }
+
+  public function modifierAction($param){
+    //param -> id_commentaire
+    $_SESSION['modifier'] = $param[1];
     header("Location: /Recette/show/$param[0]");
   }
 

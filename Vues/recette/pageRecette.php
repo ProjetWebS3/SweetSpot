@@ -75,20 +75,7 @@
 <?php
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
-<p>
-<?php 
-    echo ($A_vue['aCommenté'][$i] . $A_vue['commentaire'][$i]['id_commentaire']);
-    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){?>
 
-      <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"] ?>" method=get>
-      <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
-      <button> Modifier </button>
-      </form>
-
-    
-    <?php 
-    }?>
-</p>
 
   <div class="bg-pink-50 p-4 rounded-lg">
     <div class="flex items-center mb-4">
@@ -102,6 +89,36 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
       </div>
     </div>
     <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>
+
+    <?php 
+    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){?>
+
+      <?php
+      echo $_SESSION['modifier'];
+      
+        if ( $_SESSION['modifier'] == $A_vue['commentaire'][$i]['id_commentaire']){?>
+          <form class="w-1/2 " action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
+          <button> Valider  : </button>
+          <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
+          </form>
+      <?php 
+      } else {
+      ?>          
+      <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
+      <button> Modifier  : </button>
+      <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
+      </form>
+
+      <?php 
+      } ?>
+      
+      <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
+      <button> Modifier  : </button>
+      <input type="text" name="nouvelCommentaire" id="nouvelCommentaire">
+      </form>
+    <?php 
+    }?>
+
   </div>
   <br>
 <?php

@@ -1,5 +1,6 @@
 <div class="flexRecettes" >
 <?php
+$_SESSION['modifier'] = -1;
 for ($i = 0; $i < 3; $i++) {
 ?>
   <div data-theme="mytheme" class="flexRecette card card-compact bg-accent shadow-xl" >
