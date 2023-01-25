@@ -8,7 +8,7 @@ for ($i = 0; $i < 3; $i++) {
       <div class="flex">
         <h2 class="card-title text-base-200"><?= $A_vue['recette'][$i]['titre'] ?></h2>
         <h3 class="text-base-200 ml-3">
-          <button onclick="location.href='/Recette/deleteRecipe/<?= $A_vue['recette'][$i]['id_recette'] ?>';" class="fa-solid fa-trash fa-xl"></button>
+          <button onclick="location.href='/admin/deleteRecipe/<?= $A_vue['recette'][$i]['id_recette'] ?>';" class="fa-solid fa-trash fa-xl"></button>
           <button class="fa-solid fa-pen-to-square fa-xl ml-2"></button>
         </h3>
       </div>
