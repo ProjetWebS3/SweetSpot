@@ -7,7 +7,10 @@ for ($i = 0; $i < 3; $i++) {
     <div class="card-body">
       <div class="flex">
         <h2 class="card-title text-base-200"><?= $A_vue['recette'][$i]['titre'] ?></h2>
-        <h3 class="text-base-200 ml-3"><i class="fa-solid fa-trash fa-xl"></i><i class="fa-solid fa-pen-to-square fa-xl"></i></h3>
+        <h3 class="text-base-200 ml-3">
+          <button onclick="location.href='/Recette/deleteRecipe/<?= $A_vue['recette'][$i]['id_recette'] ?>';" class="fa-solid fa-trash fa-xl"></button>
+          <button class="fa-solid fa-pen-to-square fa-xl ml-2"></button>
+        </h3>
       </div>
       <p class="text-base-200 text-warning">Note:<br> <?= rating_stars($A_vue['recette'][$i]['note']) ?></p>
         <div class="card-actions justify-end">
