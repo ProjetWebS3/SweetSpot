@@ -18,7 +18,6 @@ final class ControleurRecette
       $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
       array_push($aCommenté, $tmp);
     }
-    var_dump($aCommenté);
       Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'aCommenté' => $aCommenté));
     }
 
