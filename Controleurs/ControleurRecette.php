@@ -12,13 +12,12 @@ final class ControleurRecette
       
       $commentaire = $model->getCommentaire($params[0]);
 
-    $aCommenté = array();
+      $aCommenté = array();
 
-    for ($i = 0 ; $i < count($commentaire); $i++) {
-      $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
-      array_push($aCommenté, $tmp);
-    }
-
+      for ($i = 0 ; $i < count($commentaire); $i++) {
+        $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
+        array_push($aCommenté, $tmp);
+      }
       Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'aCommenté' => $aCommenté));
     }
 
@@ -74,7 +73,12 @@ final class ControleurRecette
     header("Location: /Recette/show/$param[0]");
   }
 
-  
+  public function supprimerCompteAction($param){
+    $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+    $model = new Compte($db);
+    $model->deleteAccountWithComments($param[1]);
+    header("Location: /Recette/show/$param[0]");
+  }
   
 }
 ?>

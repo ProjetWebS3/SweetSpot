@@ -6,7 +6,7 @@ class Compte {
     public function __construct($db) {
         $this->db = $db;
     }
-
+    
     public function submitAction($pseudo, $mail, $password, $admin){
 
         if($pseudo == NULL || $mail == NULL || $password == NULL){
@@ -75,6 +75,13 @@ class Compte {
         } else {
             return false;
         }
+    }
+
+    public function deleteAccountWithComments($id) {
+        $stmt = $this->db->prepare("DELETE FROM Commentaire WHERE id_compte = ?");
+        $stmt->execute(array($id));
+        $stmt = $this->db->prepare("DELETE FROM Compte WHERE id_compte = ?");
+        $stmt->execute(array($id));
     }
 
 }
