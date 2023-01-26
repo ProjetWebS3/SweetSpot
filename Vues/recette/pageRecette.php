@@ -10,9 +10,9 @@ echo "<script>window.scrollTo(0, $scroll_position);</script>";
   <img class="lg:w-3/5 rounded-3xl" src="data:image/png;base64,<?= base64_encode($A_vue['recette'][0]['image']) ?>" alt="<?= $A_vue['recette'][0]['titre'] ?>">
   <div class="border-2 border-black my-12 lg:my-0 lg:mx-12 rounded-3xl"></div>
   <div class="sm:text-2xl text-base">
-    <p1>Cout : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
+    <p1>Coût : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
     <p1>Temps de préparation : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
-    <p1>Dificultée : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
+    <p1>Difficulté : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
     <p1>Note Globale : </p1><p1 class="text-yellow-400"><?= rating_stars($A_vue['recette'][0]['note']) ?></p1>
   </div>
 </div>
