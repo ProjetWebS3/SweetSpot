@@ -96,6 +96,7 @@ for ($j = count($A_vue['commentaireDesac']) -1 ; $j >= 0; $j--) {
                   <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaireDesac'][$j]['note']) ?></p>
                 </div>
                 <p class="text-gray-600" >  A commenté le  <?= $A_vue['commentaireDesac'][$j]['date'] ?> </p>
+                <p class="text-gray-600"><?= $A_vue['commentaireDesac'][$j]['commentaire'] ?></p>   
               </div>
           </div>
           </div>
