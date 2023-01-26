@@ -24,6 +24,11 @@ final class ControleurCompte
         $_SESSION['error_message'] = "";
         Vue::montrer('gestionCompte/inscription');
     }
+
+    public function reinitialisationMdpAction(){
+        $_SESSION['error_message'] = "";
+        Vue::montrer('gestionCompte/changermdp');
+    }
     
     public function inscrireAction()
     {
@@ -52,6 +57,35 @@ final class ControleurCompte
             Vue::montrer('gestionCompte/connexion');
         }
     }
+
+    public function reinitialiserMdpAction(){
+        $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+        $model = new Compte($db);
+        if($_GET['email'] == NULL){
+            $_SESSION['error_message'] = "Veuillez remplir tous les champs";
+            Vue::montrer('gestionCompte/changermdp');
+            return;
+        }
+        else if($model->mailExist($_GET['email'])){
+            $_SESSION['error_message'] = "";
+            $_SESSION['digit_mdp'] = strval(rand(1000, 9999));
+            /*$to = $_GET["email"];
+            $subject = '[Sweet Spot] Réinitialisation mot de passe';
+            $message = 'Bonjour, voici le code à rentrer pour réinitialiser votre mot de passe: '. $_SESSION['digit_mdp'];
+            $headers = array(
+            'From' => 'webmaster@example.com',
+            'Reply-To' => 'webmaster@example.com',
+            'X-Mailer' => 'PHP/' . phpversion()
+        );
+        mail($to, $subject, $message, $headers);*/
+        Vue::montrer('gestionCompte/changermdp');
+        return;
+    }
+    else {
+        Vue::montrer('gestionCompte/changermdp');
+            return;
+    }
+}
 
     public function supprimerCompteAction($param){
         $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
