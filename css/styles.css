@@ -4687,6 +4687,11 @@ html {
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
+.bg-pink-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 168 212 / var(--tw-bg-opacity));
+}
+
 .p-12 {
   padding: 3rem;
 }

@@ -15,7 +15,7 @@ class Recette {
     }
 
     public function getCommentaire($params){
-        $stmt = $this->db->prepare("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette = ?");
+        $stmt = $this->db->prepare("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette = ? AND shadow = 0");
         $stmt->execute(array($params));
         $commentaire = $stmt->fetchAll();
         return $commentaire;
@@ -118,5 +118,25 @@ class Recette {
         $stmt = $this->db->prepare("DELETE FROM Commentaire WHERE id_commentaire = ?");
         $stmt->execute(array($id_commentaire));
     }
+
+    public function desactiverCommentaire($id_commentaire){
+        $stmt = $this->db->prepare("UPDATE Commentaire SET shadow = 1 WHERE id_commentaire = ?");
+        $stmt->execute(array($id_commentaire));
+    }
+
+    public function activerCommentaire($id_commentaire){
+        $stmt = $this->db->prepare("UPDATE Commentaire SET shadow = 0 WHERE id_commentaire = ?");
+        $stmt->execute(array($id_commentaire));
+    }
+
+    public function getCommentaireDesactive($params){
+        $stmt = $this->db->prepare("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette = ? AND shadow = 1");
+        $stmt->execute(array($params));
+        $commentaire = $stmt->fetchAll();
+        return $commentaire;
+    }
+
+    
+
 
 }

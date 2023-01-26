@@ -79,8 +79,34 @@ echo "<script>window.scrollTo(0, $scroll_position);</script>";
 
 <br>
 
-
 <?php
+for ($i = count($A_vue['commentaireDesac']) -1 ; $i >= 0; $i--) {
+?>
+<?php
+        if ($A_vue['isAdmin']) {?>
+          <div>
+          <div class="bg-gray-300 p-4 rounded-lg mb-5">
+            <div class="flex items-center mb-4">
+              <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
+              <div class="ml-4">
+                <div class="flex flex-row"
+                <h3 class="text-lg font-medium"><?= $A_vue['commentaireDesac'][$i]['pseudo'] ?></h3>
+                <?php
+                if ($A_vue['isAdmin']) {?>
+                <div><i onclick="location.href='/recette/activerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaireDesac'][$i]['id_commentaire']?>';" class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaireDesac'][$i]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+                <?php
+                } ?>
+                </div>
+                <div class="flex items-center">
+                  <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaireDesac'][$i]['note']) ?></p>
+                </div>
+                <p class="text-gray-600" >  A commenté le  <?= $A_vue['commentaireDesac'][$i]['date'] ?> </p>
+              </div>
+          </div>
+          </div>
+        <?php
+        }
+      } 
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
 
@@ -104,8 +130,9 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
   </div>
 </div>
 
+        
 
-  <div class="bg-pink-50 p-4 rounded-lg">
+  <div class="bg-pink-50 p-4 rounded-lg mb-5">
     <div class="flex items-center mb-4">
       <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
       <div class="ml-4">
@@ -113,7 +140,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
         <?php
         if ($A_vue['isAdmin']) {?>
-        <div><i class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+        <div><i onclick="location.href='/recette/desactiverCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
         <?php
         } ?>
         </div>
@@ -150,7 +177,6 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
 
   </div>
-  <br>
 <script>
   document.getElementById("imgButton<?=$i?>").addEventListener("click", function(){
     console.log("click");

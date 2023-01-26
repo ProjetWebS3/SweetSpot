@@ -13,6 +13,8 @@ final class ControleurRecette
       
       $commentaire = $model->getCommentaire($params[0]);
 
+      $commentaireDesactive = $model->getCommentaireDesactive($params[0]);
+
       $isAdmin = $admin->isAdmin();
 
       $aCommenté = array();
@@ -21,7 +23,7 @@ final class ControleurRecette
         $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
         array_push($aCommenté, $tmp);
       }
-      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'aCommenté' => $aCommenté, 'isAdmin' => $isAdmin));
+      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'commentaireDesac' => $commentaireDesactive, 'aCommenté' => $aCommenté, 'isAdmin' => $isAdmin));
     }
 
   public function searchAction()
@@ -81,6 +83,20 @@ final class ControleurRecette
     $model = new Recette($db);
     $model->supprimerCommentaire($param[1]);
     $_SESSION['scroll_position'] = $_SERVER['HTTP_USER_AGENT'];
+    header("Location: /Recette/show/$param[0]");
+  }
+
+  public function desactiverCommentaireAction($param) {
+    $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+    $model = new Recette($db);
+    $model->desactiverCommentaire($param[1]);
+    header("Location: /Recette/show/$param[0]");
+  }
+
+  public function activerCommentaireAction($param) {
+    $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+    $model = new Recette($db);
+    $model->activerCommentaire($param[1]);
     header("Location: /Recette/show/$param[0]");
   }
   
