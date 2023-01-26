@@ -158,11 +158,34 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
         //Si l'utilisateur a cliqué sur le bouton modifier
         if ( $_SESSION['modifier'] == $A_vue['commentaire'][$i]['id_commentaire']){
     ?>
+
+      <form class="w-1/2 border-2 border-red-600" action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 font-medium mb-2">
+              Note
+            </label>
+            <input type="range" name="noteModifier" min="1" max="5" value="3" class="range range-accent" step="0.5" />
+            <div class="w-full flex justify-between text-xs px-2 bg-red">
+              <span>1</span>
+              <span>|</span>
+              <span>2</span>
+              <span>|</span>
+              <span>3</span>
+              <span>|</span>
+              <span>4</span>
+              <span>|</span>
+              <span>5</span>
+            </div>
+          </div>
+
+
           <form class="w-1/2 " action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
-          <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50 border-2 border-red-600">
+          <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50">
           <br>
           <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
           </form>
+
       <?php 
       } else {
       ?>
