@@ -97,4 +97,9 @@ class Compte {
         }
     }
 
+    public function updateEmail($mail, $password){
+        $stmt = $this->db->prepare("UPDATE Compte SET password = ?  WHERE email = ?");
+        $stmt->execute(array($password, $mail));
+    }
+
 }
