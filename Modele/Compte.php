@@ -70,7 +70,7 @@ class Compte {
         $stmt = $this->db->prepare("SELECT * FROM Compte WHERE token = ?");
         $stmt->execute(array($_SESSION['token']));
         $result = $stmt->fetchAll();
-        if ($result[0]["admin"] == 1) {
+        if ($result[0]["admin"] == 1 && $result[0]["pseudo"] == $_SESSION["pseudo"]) {
             return true;
         } else {
             return false;
