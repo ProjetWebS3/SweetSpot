@@ -18,24 +18,3 @@
     </form>
   </div>
 </div>
-
-
-
-
-<button id="myBtn">Click me</button>
-<div id="myDiv">This will be hidden</div>
-
-<script>
-    var btn = document.getElementById("myBtn");
-    var div = document.getElementById("myDiv");
-
-    btn.addEventListener("click", function(){
-        if(div.style.display === "none") {
-            div.style.display = "block";
-        } else {
-            div.style.display = "none";
-        }
-    });
-</script>
-
-
