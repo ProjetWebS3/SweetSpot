@@ -11,7 +11,7 @@
   <div class="flex-none gap-2">
     <div class="form-control">
       <form action="/Recette/search/" method=get>
-        <input type="text" name="search" placeholder="Search" class="input input-bordered" id="searchBar" />
+        <input type="text" name="search" placeholder="Recherche" class="input input-bordered" id="searchBar" />
       </form>
     </div>
     <div class="dropdown dropdown-end">
