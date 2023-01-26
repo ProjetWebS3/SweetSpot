@@ -23,6 +23,7 @@ class Compte {
             return; 
         } else {    
             $token = bin2hex(random_bytes(32));
+            $password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
             
             $query = $this->db->prepare("INSERT INTO Compte (id_compte, pseudo, email, password, admin, token, date_creation, date_connexion) VALUES (:id_compte, :pseudo, :email, :password, :admin, :token, :date_creation, :date_connexion);");
             $query->bindValue(':id_compte', '', PDO::PARAM_INT);
@@ -46,14 +47,10 @@ class Compte {
         $stmt2 = $this->db->prepare("UPDATE Compte SET date_connexion = ?  WHERE email=?");
         $stmt2->execute(array($dateConnexion,$mail));
 
-
-        /*$stmt2 = $this->db->prepare("UPDATE Compte SET date_connexion = '?'  WHERE email=$mail");
-        $stmt2->execute(array(date("Y-m-d H:i:s")));*/
-
         $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
         $stmt->execute(array($mail));
         $result = $stmt->fetchAll();
-        if ($result[0]["password"] == $password && $password != "") {
+        if (password_verify($password, $result[0]["password"]) && $password != ""){
             $_SESSION['token'] = $result[0]['token'];
             $_SESSION['pseudo'] = $result[0]['pseudo'];
             $_SESSION['error_message'] = "";
