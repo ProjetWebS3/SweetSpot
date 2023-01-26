@@ -87,7 +87,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 <div id="popup<?=$i?>" class="popup ml-auto mr-auto flex w-1/2 flex-col rounded-2xl bg-pink-50 text-xs md:text-base">
   <div class="flex flex-row justify-between">
     <div class="flex flex-row">
-      <img src="https://sweet-spot.alwaysdata.net/img/photoProfil.png" alt="Roger Dauber" class="m-3 h-12 w-12 rounded-full" />
+      <img src="/img/photoProfil.png" alt="Roger Dauber" class="m-3 h-12 w-12 rounded-full" />
       <p1 class="mt-auto mb-auto ml-5"><?= $A_vue['commentaire'][$i]['pseudo'] ?></p1>
     </div>
     <i id="close<?=$i?>" class="text-red-500 fa-solid fa-circle-xmark mt-auto mb-auto mr-5 pl-5 md:pl-0 fa-xl"></i>
@@ -140,7 +140,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
   </div>
   <br>
-  <script>
+<script>
   document.getElementById("imgButton<?=$i?>").addEventListener("click", function(){
     console.log("click");
     document.getElementById("popup<?=$i?>").style.display = "block";
