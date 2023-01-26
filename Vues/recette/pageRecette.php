@@ -89,7 +89,7 @@ for ($j = count($A_vue['commentaireDesac']) -1 ; $j >= 0; $j--) {
             <div class="flex items-center mb-4">
               <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
               <div class="ml-4">
-                <div class="flex flex-row"
+                <div class="flex flex-row">
                 <h3 class="text-lg font-medium"><?= $A_vue['commentaireDesac'][$j]['pseudo'] ?></h3>
                 <?php
                 if ($A_vue['isAdmin']) {?>
@@ -136,7 +136,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
     <div class="flex items-center mb-4">
       <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
       <div class="ml-4">
-        <div class="flex flex-row"
+        <div class="flex flex-row">
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
         <?php
         if ($A_vue['isAdmin']) {?>
@@ -161,19 +161,24 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
           <form class="w-1/2 " action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
           <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50 border-2 border-red-600">
           <br>
-          <button class="bg-white text-gray-500 py-8 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
+          <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
           </form>
       <?php 
       } else {
-      ?>   
+      ?>
       
       <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
       <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
-      <button class="bg-white text-gray-500 py-8 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
+      <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
       </form>
       <?php  
       } 
-    }?>
+    } else {?>
+
+      <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
+
+    <?php 
+    } ?>
 
 
   </div>
