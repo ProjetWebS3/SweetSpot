@@ -28,8 +28,10 @@ final class ControleurRecette
     require_once("Modele/helpers.php");
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Recette($db);
+    $admin = new Compte($db);
+    $isAdmin = $admin->isAdmin();
     $recettes = $model->searchRecette($_GET['search']);
-    Vue::montrer('recette/pageSearchResult', array('recettes' => $recettes));
+    Vue::montrer('recette/pageSearchResult', array('recettes' => $recettes, 'isAdmin' => $isAdmin));
   }
 
   public function searchByCategoryAction($params)
@@ -38,7 +40,9 @@ final class ControleurRecette
     $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
     $model = new Categorie($db);
     $recettes = $model->searchByCategory($params[0]);
-    Vue::montrer('recette/pageSearchResult', array('recettes' => $recettes));
+    $admin = new Compte($db);
+    $isAdmin = $admin->isAdmin();
+    Vue::montrer('recette/pageSearchResult', array('recettes' => $recettes, 'isAdmin' => $isAdmin));
   }
       
   public function commenterAction($params){

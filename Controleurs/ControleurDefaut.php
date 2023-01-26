@@ -9,9 +9,11 @@ final class ControleurDefaut
         $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
         $recetteModel = new Recette($db);
         $categorieModel = new Categorie($db);
+        $admin = new Compte($db);
+        $isAdmin = $admin->isAdmin();
         $recette = $recetteModel->get3Recettes();
         $categorie = $categorieModel->getCategories();
-        Vue::montrer('accueil/introduction', array('recette' => $recette, 'categorie' => $categorie));
+        Vue::montrer('accueil/introduction', array('recette' => $recette, 'categorie' => $categorie, 'isAdmin' => $isAdmin));
 
         
     }

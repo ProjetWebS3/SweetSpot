@@ -1,4 +1,4 @@
-<h1 class="text-3xl text-center">Créer une recette :</h1>
+<h1 class="text-3xl text-center">Modifier une recette :</h1>
 <br />
 <div class="flex items-center justify-center p-12">
 <div class="mx-auto w-full max-w-[550px]">

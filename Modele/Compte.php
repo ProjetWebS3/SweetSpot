@@ -64,6 +64,9 @@ class Compte {
     }
 
     public function isAdmin() {
+        if (!isset($_SESSION['token'])) {
+            return false;
+        }
         $stmt = $this->db->prepare("SELECT * FROM Compte WHERE token = ?");
         $stmt->execute(array($_SESSION['token']));
         $result = $stmt->fetchAll();
