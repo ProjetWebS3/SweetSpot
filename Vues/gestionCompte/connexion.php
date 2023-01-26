@@ -15,6 +15,9 @@
         <input type="submit" value="Envoyer" style="border: 1px solid black;" class="focus:shadow-outline btn rounded bg-accent py-2 px-4 font-bold text-white focus:outline-none" />
         <a href="/compte/inscription" class="btn btn-ghost">S'inscrire</a>
       </div>
+      <div class="flex justify-center">
+      <a href="/compte/reinitialisationMdp" class="btn btn-ghost text-xs">Mot de passe oublié</a>
+</div>
     </form>
   </div>
 </div>

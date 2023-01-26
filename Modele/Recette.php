@@ -86,10 +86,10 @@ class Recette {
         $modelCat->alterCategorie($id_recette, $recipeDifficulty,1,4);
     }
 
-    public function validerCommentaire($id_compte, $commentaire){
+    public function validerCommentaire($id_compte, $commentaire, $note){
 
-        $stmt = $this->db->prepare("UPDATE Commentaire SET commentaire = ?  WHERE id_commentaire=?");
-        $stmt->execute(array($commentaire,$id_compte));
+        $stmt = $this->db->prepare("UPDATE Commentaire SET commentaire = ?, note = ?  WHERE id_commentaire=?");
+        $stmt->execute(array($commentaire,$note, $id_compte));
     }
 
     public function deleteRecipe($id_recette){
@@ -113,5 +113,23 @@ class Recette {
         }
         
     }
+
+    public function supprimerCommentaire($id_commentaire){
+        $stmt = $this->db->prepare("DELETE FROM Commentaire WHERE id_commentaire = ?");
+        $stmt->execute(array($id_commentaire));
+    }
+
+    public function desactiverCommentaire($id_commentaire){
+        $stmt = $this->db->prepare("UPDATE Commentaire SET shadow = 1 WHERE id_commentaire = ?");
+        $stmt->execute(array($id_commentaire));
+    }
+
+    public function activerCommentaire($id_commentaire){
+        $stmt = $this->db->prepare("UPDATE Commentaire SET shadow = 0 WHERE id_commentaire = ?");
+        $stmt->execute(array($id_commentaire));
+    }
+
+    
+
 
 }

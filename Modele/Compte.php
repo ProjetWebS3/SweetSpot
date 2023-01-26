@@ -84,4 +84,17 @@ class Compte {
         $stmt->execute(array($id));
     }
 
+    public function mailExist($mail) {
+        $stmt = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
+        $stmt->execute(array($mail));
+        $result = $stmt->fetchAll();
+        if(count($result) <= 0){
+            $_SESSION['error_message'] = "L'adresse mail n'existe pas";
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }
