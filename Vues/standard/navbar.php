@@ -21,7 +21,6 @@
         </div>
       </label>
       <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-        <li><a>Settings</a></li>
         
 
         <?php 
@@ -32,9 +31,6 @@
           echo "<li><a href= /compte/connexion> Connexion </a></li>";
         }
         ?>
-        <li class="dropdown-header">Gestion Admin</li>
-        <li><a href="/compte/">Compte</a></li>
-        <li><a href="/commentaire/">Commentaires</a></li>
       </ul>
     </div>
   </div>

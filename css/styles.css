@@ -5256,6 +5256,14 @@ textarea {
 }
 
 @media (min-width: 640px) {
+  .sm\:w-3\/4 {
+    width: 75%;
+  }
+
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -5265,6 +5273,10 @@ textarea {
 @media (min-width: 768px) {
   .md\:ml-5 {
     margin-left: 1.25rem;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   .md\:pl-0 {
