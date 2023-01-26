@@ -1,10 +1,3 @@
-<?php
-
-$scroll_position = $_SESSION['scroll_position'];
-echo "<script>window.scrollTo(0, $scroll_position);</script>";
-
-?>
-
 <h1 class="text-center text-6xl mt-6"><?= $A_vue['recette'][0]['titre'] ?></h1>
 <div class="flex flex-col lg:flex-row m-8">
   <img class="lg:w-3/5 rounded-3xl" src="data:image/png;base64,<?= base64_encode($A_vue['recette'][0]['image']) ?>" alt="<?= $A_vue['recette'][0]['titre'] ?>">
@@ -16,6 +9,7 @@ echo "<script>window.scrollTo(0, $scroll_position);</script>";
     <p1>Note Globale : </p1><p1 class="text-yellow-400"><?= rating_stars($A_vue['recette'][0]['note']) ?></p1>
   </div>
 </div>
+
 <div  class="flex flex-col lg:flex-row">
   <div data-theme="mytheme" class="bg-base-100 rounded-3xl p-10 m-10 lg:w-2/3 w-auto">
     <p1>
@@ -79,6 +73,7 @@ echo "<script>window.scrollTo(0, $scroll_position);</script>";
 
 <br>
 
+<!-- Afficher commentaire info-->
 <?php
 for ($j = count($A_vue['commentaireDesac']) -1 ; $j >= 0; $j--) {
 ?>
@@ -107,6 +102,7 @@ for ($j = count($A_vue['commentaireDesac']) -1 ; $j >= 0; $j--) {
         <?php
         }
       } 
+// Afficher commentaire info
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
 
@@ -130,19 +126,25 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
   </div>
 </div>
 
-        
 
-  <div class="bg-pink-50 p-4 rounded-lg mb-5">
+
+
+
+
+<!-- Pour chaque comm-->
+<div class="bg-pink-50 p-4 rounded-lg mb-5">
     <div class="flex items-center mb-4">
       <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
       <div class="ml-4">
         <div class="flex flex-row">
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
-        <?php
-        if ($A_vue['isAdmin']) {?>
-        <div><i onclick="location.href='/recette/desactiverCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
-        <?php
-        } ?>
+        
+        <?php if ($A_vue['isAdmin']) {?>
+          <div>
+          <i onclick="location.href='/recette/desactiverCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i>
+          </div>
+        <?php } ?>
+
         </div>
         <div class="flex items-center">
           <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaire'][$i]['note']) ?></p>
@@ -154,12 +156,15 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
     <?php 
     //Si l'utilisateur a déjà commenté la recette
-    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){
-        //Si l'utilisateur a cliqué sur le bouton modifier
-        if ( $_SESSION['modifier'] == $A_vue['commentaire'][$i]['id_commentaire']){
-    ?>
+    if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){ ?>
 
-      <form class="w-1/2 border-2 border-red-600" action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
+      <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
+      <form class="w-1/2 ">
+      <button id="btnModifier" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
+      </form>
+      
+
+      <form action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get id="formModifier" class="w-1/2 border-2 border-red-600" method=get>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2">
@@ -177,34 +182,45 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
               <span>|</span>
               <span>5</span>
             </div>
-          </div>
 
-
-          <form class="w-1/2 " action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
           <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50">
           <br>
-          <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
-          </form>
+          <button id="btnValider" type = "submit" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
 
-      <?php 
-      } else {
-      ?>
-      
-      <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
-      <form class="w-1/2 " action="/Recette/modifier/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get>
-      <button class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
+          </div>
+
       </form>
-      <?php  
-      } 
-    } else {?>
 
-      <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
-
-    <?php 
-    } ?>
-
-
+      <?php } ?>
   </div>
+
+
+<script>
+  var div = document.getElementById("formModifier");
+  var btnModifier = document.getElementById("btnModifier");
+  var btnValider = document.getElementById("btnValider");
+  div.style.display = "none";
+
+  btnModifier.addEventListener("click", function(event){
+    event.preventDefault();
+    btnValider.style.display = "block";
+    btnModifier.style.display = "none";
+    div.style.display = "block";
+  });
+  /*
+  btnValider.addEventListener("click", function(event){
+    event.preventDefault();
+    btnValider.style.display = "none";
+    div.style.display = "none";
+    btnModifier.style.display = "block";
+  });*/
+
+</script>
+
+
+
+
+
 <script>
   document.getElementById("imgButton<?=$i?>").addEventListener("click", function(){
     console.log("click");

@@ -50,7 +50,6 @@ final class ControleurRecette
   }
       
   public function commenterAction($params){
-
     if($_SESSION['token'] == NULL){
       var_dump("Vous n'etes pas connecter");
     } else{
