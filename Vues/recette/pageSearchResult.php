@@ -34,3 +34,5 @@ while(isset($A_vue['recettes'][$i]['titre'])) {
     $i++;
 }
 ?>
+
+<br>
