@@ -153,16 +153,15 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
       </div>
     </div>
 
+    <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
 
     <?php 
     //Si l'utilisateur a déjà commenté la recette
     if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){ ?>
 
-      <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>       
       <form class="w-1/2 ">
       <button id="btnModifier" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
       </form>
-      
 
       <form action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get id="formModifier" class="w-1/2 border-2 border-red-600" method=get>
 
@@ -191,29 +190,24 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
       </form>
 
-      <?php } ?>
+      <?php } else {?>
+
+
+      <?php }?>
   </div>
+
 
 
 <script>
   var div = document.getElementById("formModifier");
   var btnModifier = document.getElementById("btnModifier");
-  var btnValider = document.getElementById("btnValider");
   div.style.display = "none";
 
   btnModifier.addEventListener("click", function(event){
     event.preventDefault();
-    btnValider.style.display = "block";
     btnModifier.style.display = "none";
     div.style.display = "block";
   });
-  /*
-  btnValider.addEventListener("click", function(event){
-    event.preventDefault();
-    btnValider.style.display = "none";
-    div.style.display = "none";
-    btnModifier.style.display = "block";
-  });*/
 
 </script>
 
@@ -235,3 +229,5 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 }
 ?>
 
+<br>
+<br>
