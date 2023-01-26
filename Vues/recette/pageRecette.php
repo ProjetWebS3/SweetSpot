@@ -1,3 +1,4 @@
+<!-- Afficher recette info-->
 <h1 class="text-center text-6xl mt-6"><?= $A_vue['recette'][0]['titre'] ?></h1>
 <div class="flex flex-col lg:flex-row m-8">
   <img class="lg:w-3/5 rounded-3xl" src="data:image/png;base64,<?= base64_encode($A_vue['recette'][0]['image']) ?>" alt="<?= $A_vue['recette'][0]['titre'] ?>">
@@ -73,37 +74,8 @@
 
 <br>
 
-<!-- Afficher commentaire info-->
+<!-- PopUp utilisateur info-->
 <?php
-for ($j = count($A_vue['commentaireDesac']) -1 ; $j >= 0; $j--) {
-?>
-<?php
-        if ($A_vue['isAdmin']) {?>
-          <div>
-          <div class="bg-gray-300 p-4 rounded-lg mb-5">
-            <div class="flex items-center mb-4">
-              <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
-              <div class="ml-4">
-                <div class="flex flex-row">
-                <h3 class="text-lg font-medium"><?= $A_vue['commentaireDesac'][$j]['pseudo'] ?></h3>
-                <?php
-                if ($A_vue['isAdmin']) {?>
-                <div><i onclick="location.href='/recette/activerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaireDesac'][$j]['id_commentaire']?>';" class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaireDesac'][$j]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
-                <?php
-                } ?>
-                </div>
-                <div class="flex items-center">
-                  <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaireDesac'][$j]['note']) ?></p>
-                </div>
-                <p class="text-gray-600" >  A commenté le  <?= $A_vue['commentaireDesac'][$j]['date'] ?> </p>
-                <p class="text-gray-600"><?= $A_vue['commentaireDesac'][$j]['commentaire'] ?></p>   
-              </div>
-          </div>
-          </div>
-        <?php
-        }
-      } 
-// Afficher commentaire info
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
 
@@ -132,7 +104,9 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
 
 
-<!-- Pour chaque comm-->
+<!-- Afficher les Commentaires activés-->
+<?php
+if ($A_vue['commentaire'][$i]['shadow'] == 0) { ?>
 <div class="bg-pink-50 p-4 rounded-lg mb-5">
     <div class="flex items-center mb-4">
       <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
@@ -194,7 +168,34 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
       <?php }?>
 
   </div>
-
+<?php }
+//Afficher les commentaires désactivés
+    if ($A_vue['commentaire'][$i]['shadow'] == 1) {
+      if ($A_vue['isAdmin']) { ?>
+    <div>
+    <div class="bg-gray-300 p-4 rounded-lg mb-5">
+      <div class="flex items-center mb-4">
+        <img src="/img/photoProfil.png" id="imgButton<?=$i?>" alt="Roger Dauber" class="w-12 h-12 rounded-full">
+        <div class="ml-4">
+          <div class="flex flex-row">
+          <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
+          <?php
+          if ($A_vue['isAdmin']) { ?>
+          <div><i onclick="location.href='/recette/activerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire'] ?>';" class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire'] ?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+          <?php
+          } ?>
+          </div>
+          <div class="flex items-center">
+            <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaire'][$i]['note']) ?></p>
+          </div>
+          <p class="text-gray-600" >  A commenté le  <?= $A_vue['commentaire'][$i]['date'] ?> </p>
+          <p class="text-gray-600"><?= $A_vue['commentaire'][$i]['commentaire'] ?></p>   
+        </div>
+    </div>
+    </div>
+  <?php
+      }
+    }?>
   <script>
     document.getElementById("formModifier<?=$i?>").style.display = "none";
 
@@ -209,7 +210,7 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
 
 
-
+<!-- GESTION POPUP -->
 <script>
   document.getElementById("imgButton<?=$i?>").addEventListener("click", function(){
     console.log("click");

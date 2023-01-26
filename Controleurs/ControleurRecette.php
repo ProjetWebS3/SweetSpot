@@ -13,8 +13,6 @@ final class ControleurRecette
       
       $commentaire = $model->getCommentaire($params[0]);
 
-      $commentaireDesactive = $model->getCommentaireDesactive($params[0]);
-
       $isAdmin = $admin->isAdmin();
 
       $aCommenté = array();
@@ -23,7 +21,7 @@ final class ControleurRecette
         $tmp = $model -> aCommenté($commentaire[$i]['id_compte'], $commentaire[$i]['id_commentaire']);
         array_push($aCommenté, $tmp);
       }
-      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'commentaireDesac' => $commentaireDesactive, 'aCommenté' => $aCommenté, 'isAdmin' => $isAdmin));
+      Vue::montrer('recette/pageRecette', array('recette' => $recette, 'categories' => $catDeLaRecette, 'commentaire' => $commentaire, 'aCommenté' => $aCommenté, 'isAdmin' => $isAdmin));
     }
 
   public function searchAction()
