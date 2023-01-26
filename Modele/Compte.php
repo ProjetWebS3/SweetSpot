@@ -96,7 +96,13 @@ class Compte {
 
     public function updateEmail($mail, $password){
         $stmt = $this->db->prepare("UPDATE Compte SET password = ?  WHERE email = ?");
-        $stmt->execute(array($password, $mail));
+        $stmt->execute(array(password_hash(strval($password), PASSWORD_BCRYPT, ['cost' => 12]), $mail));
+
+        $stmt2 = $this->db->prepare("SELECT * FROM Compte WHERE Email = ?");
+        $stmt2->execute(array($mail));
+        $result = $stmt->fetchAll();
+        $_SESSION['token'] = $result[0]["token"];
+        $_SESSION['pseudo'] = $result[0]["pseudo"];
     }
 
     public function desactiverCompte($id) {
