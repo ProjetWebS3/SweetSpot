@@ -1,6 +1,6 @@
 <div class="navbar bg-base-100" data-theme="mytheme">
   <div class="flex-1">
-    <a href="/"class="btn btn-ghost normal-case text-xl">Sweet Spot</a>
+    <a href="/" class="btn btn-ghost normal-case text-xl">Sweet Spot</a>
     <p>
     <?php 
     if($_SESSION['pseudo'] != NULL){
@@ -17,7 +17,7 @@
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-          <img src="/img/photoProfil.png" />
+          <img src="/img/photoProfil.png" alt="Photo de profil">
         </div>
       </label>
       <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">

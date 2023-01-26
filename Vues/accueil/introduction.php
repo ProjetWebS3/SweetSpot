@@ -29,7 +29,7 @@ for ($i = 0; $i < 3; $i++) {
 </div>
 <div data-theme ="mytheme" class="bg-white m-5 mb-20">
   <h2 class="text-2xl font-bold tracking-tight text-gray-900">Liste des catégories</h2>
-  </br>
+  <br>
   <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Difficultés</h2>
   <div class="grid grid-cols-4 gap-4 h-16 font-medium">
     <?php 
@@ -39,7 +39,7 @@ for ($i = 0; $i < 3; $i++) {
       </button>
     <?php } ?>
   </div>
-  </br>
+  <br>
   <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Coût</h2>
   <div class="grid grid-cols-4 gap-4 h-16 font-medium">
     <?php 
@@ -49,7 +49,7 @@ for ($i = 0; $i < 3; $i++) {
       </button>
     <?php } ?>
   </div>
-  </br>
+  <br>
   <h2 class="text-2x2 font-bold tracking-tight text-gray-900">Durée</h2>
     <div class="grid grid-cols-4 gap-4 h-16 font-bold text-white">
       <?php 
