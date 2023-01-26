@@ -48,8 +48,6 @@
       document.getElementById("searchBarForm").submit();
     }
   });
-<<<<<<< HEAD
-
   function toggleSubMenu(link) {
     var subMenu = link.nextElementSibling;
     if (subMenu.style.display === "block") {
@@ -60,6 +58,3 @@
   }
 
 </script>
-=======
-</script>
->>>>>>> ca13a350d6c7b4c341a71ee3ba362ff5f8339fc6
