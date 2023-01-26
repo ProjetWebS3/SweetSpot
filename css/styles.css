@@ -4147,6 +4147,10 @@ html {
   right: 0px;
 }
 
+.right-10 {
+  right: 2.5rem;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -4501,6 +4505,10 @@ html {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.overflow-visible {
+  overflow: visible;
 }
 
 .rounded-md {

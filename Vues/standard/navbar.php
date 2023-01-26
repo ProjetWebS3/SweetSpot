@@ -21,16 +21,20 @@
         </div>
       </label>
       <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-        <li><a>Profil</a></li>
+        <li><a>Settings</a></li>
+        
+
         <?php 
         if ($_SESSION['pseudo'] != NULL) {
-          echo "<li><a href= /compte/deconnexion> Déconnexion </a></li>";
+          echo "<li><a href= /compte/deconnexion> Logout </a></li>";
         } else {
           echo "<li><a href= /compte/inscription> Inscription </a></li>";
           echo "<li><a href= /compte/connexion> Connexion </a></li>";
         }
         ?>
-        
+        <li class="dropdown-header">Gestion Admin</li>
+        <li><a href="/compte/">Compte</a></li>
+        <li><a href="/commentaire/">Commentaires</a></li>
       </ul>
     </div>
   </div>
@@ -44,4 +48,14 @@
       document.getElementById("searchBarForm").submit();
     }
   });
+
+  function toggleSubMenu(link) {
+    var subMenu = link.nextElementSibling;
+    if (subMenu.style.display === "block") {
+      subMenu.style.display = "none";
+    } else {
+      subMenu.style.display = "block";
+    }
+  }
+
 </script>

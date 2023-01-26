@@ -96,7 +96,11 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
   <p1 class="pl-5 md:pl-0 md:ml-5">Dernière connexion : 01/01/0000</p1>
   <div class="m-5 flex flex-row justify-between">
     <p1>Nombre de commentaires : 6</p1>
-    <div><i class="fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+    <?php
+        if ($A_vue['isAdmin']) {?>
+        <div><i class="fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/compte/supprimerCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+        <?php
+        } ?>
   </div>
 </div>
 
@@ -105,7 +109,14 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
     <div class="flex items-center mb-4">
       <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
       <div class="ml-4">
+        <div class="flex flex-row"
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
+        <?php
+        if ($A_vue['isAdmin']) {?>
+        <div><i class="pl-5 fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/recette/supprimerCommentaire/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_commentaire']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+        <?php
+        } ?>
+        </div>
         <div class="flex items-center">
           <p class="text-yellow-400 ml-2"><?= rating_stars($A_vue['commentaire'][$i]['note']) ?></p>
         </div>

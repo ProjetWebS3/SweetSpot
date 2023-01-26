@@ -114,4 +114,9 @@ class Recette {
         
     }
 
+    public function supprimerCommentaire($id_commentaire){
+        $stmt = $this->db->prepare("DELETE FROM Commentaire WHERE id_commentaire = ?");
+        $stmt->execute(array($id_commentaire));
+    }
+
 }
