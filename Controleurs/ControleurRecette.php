@@ -50,7 +50,11 @@ final class ControleurRecette
       
   public function commenterAction($params){
     if($_SESSION['token'] == NULL){
-      var_dump("Vous n'etes pas connecter");
+      echo "<div class=\"alert alert-error shadow-lg\">";
+      echo "<div>";
+      echo "<span>You need to be connected !</span>";
+      echo "</div>";
+      echo "</div>";
     } else{
       $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
       $model = new Commentaire($db);
