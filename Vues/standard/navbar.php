@@ -48,13 +48,4 @@
       document.getElementById("searchBarForm").submit();
     }
   });
-  function toggleSubMenu(link) {
-    var subMenu = link.nextElementSibling;
-    if (subMenu.style.display === "block") {
-      subMenu.style.display = "none";
-    } else {
-      subMenu.style.display = "block";
-    }
-  }
-
 </script>
