@@ -102,4 +102,14 @@ class Compte {
         $stmt->execute(array($password, $mail));
     }
 
+    public function desactiverCompte($id) {
+        $stmt = $this->db->prepare("UPDATE Compte SET shadow = 1  WHERE id_compte = ?");
+        $stmt->execute(array($id));
+    }
+
+    public function activerCompte($id) {
+        $stmt = $this->db->prepare("UPDATE Compte SET shadow = 0  WHERE id_compte = ?");
+        $stmt->execute(array($id));
+    }
+
 }

@@ -113,7 +113,21 @@ public function changerMdpAction(){
         $model = new Compte($db);
         $model->deleteAccountWithComments($param[1]);
         header("Location: /Recette/show/$param[0]");
-      }
+    }
+
+    public function desactiverCompteAction($param){
+        $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+        $model = new Compte($db);
+        $model->desactiverCompte($param[1]);
+        header("Location: /Recette/show/$param[0]");
+    }
+
+    public function activerCompteAction($param){
+        $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+        $model = new Compte($db);
+        $model->activerCompte($param[1]);
+        header("Location: /Recette/show/$param[0]");
+    }
 
 }
 ?>
