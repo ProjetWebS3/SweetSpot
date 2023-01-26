@@ -142,14 +142,15 @@ if ($A_vue['commentaire'][$i]['shadow'] == 0) { ?>
       <button id="btnModifier<?=$i?>" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
       </form>
 
-      <form action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get id="formModifier<?=$i?>" class="w-1/2 border-2 border-red-600" method=get>
+      <form action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get id="formModifier<?=$i?>" class="w-1/2" method=get>
 
-          <div class="mb-4">
+          <div>
             <label class="block text-gray-700 font-medium mb-2">
+              Modification de votre avis :</br>
               Note
             </label>
             <input type="range" name="noteModifier" min="1" max="5" value="3" class="range range-accent" step="0.5" />
-            <div class="w-full flex justify-between text-xs px-2 bg-red">
+            <div class="w-full flex justify-between text-xs px-2">
               <span>1</span>
               <span>|</span>
               <span>2</span>
@@ -160,10 +161,15 @@ if ($A_vue['commentaire'][$i]['shadow'] == 0) { ?>
               <span>|</span>
               <span>5</span>
             </div>
-
-          <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50">
+            <textarea
+              class="bg-white p-2 rounded-lg w-full mt-2"
+              name="nouvelCommentaire" 
+              id="nouvelCommentaire"
+              placeholder=<?= $A_vue['commentaire'][$i]["commentaire"]?> 
+              required
+            ></textarea>
           <br>
-          <button type = "submit" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
+          <button type = "submit" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200 mt-2"> Valider </button>
 
           </div>
 
