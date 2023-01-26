@@ -9,7 +9,11 @@
         <title>SweetSpot</title>
     </head>
     <body class="h-screen">
-        <?php Vue::montrer('standard/navbar'); ?>
+        <?php
+        $db = new PDO("mysql:host=mysql-sweet-spot.alwaysdata.net;dbname=sweet-spot_db", "296154","sweetspot123");
+        $admin = new Compte($db);
+        $isAdmin = $admin->isAdmin();
+         Vue::montrer('standard/navbar', array('isAdmin' => $isAdmin)); ?>
         <?php echo $A_vue['body'] ?>
         <?php Vue::montrer('standard/pied'); ?>
     </body>

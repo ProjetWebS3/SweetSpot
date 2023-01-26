@@ -25,6 +25,9 @@
 
         <?php 
         if ($_SESSION['pseudo'] != NULL) {
+          if ($A_vue['isAdmin']) { ?>
+            <li><a href= /admin> Création Recette </a></li>
+          <?php }
           echo "<li><a href= /compte/deconnexion> Logout </a></li>";
         } else {
           echo "<li><a href= /compte/inscription> Inscription </a></li>";
