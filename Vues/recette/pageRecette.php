@@ -160,10 +160,10 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
     if( $A_vue['aCommenté'][$i] == $A_vue['commentaire'][$i]['id_commentaire'] ){ ?>
 
       <form class="w-1/2 ">
-      <button id="btnModifier" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
+      <button id="btnModifier<?=$i?>" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Modifier </button>
       </form>
 
-      <form action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get id="formModifier" class="w-1/2 border-2 border-red-600" method=get>
+      <form action="/Recette/valider/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]["id_commentaire"]?>" method=get id="formModifier<?=$i?>" class="w-1/2 border-2 border-red-600" method=get>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2">
@@ -184,32 +184,26 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
           <input type="text" value=<?= $A_vue['commentaire'][$i]["commentaire"]?> name="nouvelCommentaire" id="nouvelCommentaire" class="bg-pink-50">
           <br>
-          <button id="btnValider" type = "submit" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
+          <button type = "submit" class="bg-white text-gray-500 py-2 px-4 rounded-lg hover:bg-gray-200"> Valider </button>
 
           </div>
 
       </form>
 
-      <?php } else {?>
-
-
       <?php }?>
+
   </div>
 
+  <script>
+    document.getElementById("formModifier<?=$i?>").style.display = "none";
 
+    document.getElementById("btnModifier<?=$i?>").addEventListener("click", function(event){
+      event.preventDefault();
+      document.getElementById("btnModifier<?=$i?>").style.display = "none";
+      document.getElementById("formModifier<?=$i?>").style.display = "block";
+    });
 
-<script>
-  var div = document.getElementById("formModifier");
-  var btnModifier = document.getElementById("btnModifier");
-  div.style.display = "none";
-
-  btnModifier.addEventListener("click", function(event){
-    event.preventDefault();
-    btnModifier.style.display = "none";
-    div.style.display = "block";
-  });
-
-</script>
+  </script>
 
 
 
