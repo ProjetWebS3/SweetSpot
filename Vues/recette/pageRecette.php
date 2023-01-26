@@ -79,14 +79,31 @@ echo "<script>window.scrollTo(0, $scroll_position);</script>";
 
 <br>
 
+
 <?php
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 ?>
 
+<div id="popup<?=$i?>" class="popup ml-auto mr-auto flex w-1/2 flex-col rounded-2xl bg-pink-50 text-xs md:text-base">
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-row">
+      <img src="https://sweet-spot.alwaysdata.net/img/photoProfil.png" alt="Roger Dauber" class="m-3 h-12 w-12 rounded-full" />
+      <p1 class="mt-auto mb-auto ml-5"><?= $A_vue['commentaire'][$i]['pseudo'] ?></p1>
+    </div>
+    <i id="close<?=$i?>" class="text-red-500 fa-solid fa-circle-xmark mt-auto mb-auto mr-5 pl-5 md:pl-0 fa-xl"></i>
+  </div>
+  <p1 class="pl-5 md:ml-5 md:pl-0">Création du compte : 01/01/0000</p1><br>
+  <p1 class="pl-5 md:pl-0 md:ml-5">Dernière connexion : 01/01/0000</p1>
+  <div class="m-5 flex flex-row justify-between">
+    <p1>Nombre de commentaires : 6</p1>
+    <div><i class="fa-solid fa-ghost fa-xl pr-2"></i><i class="fa-solid fa-gavel fa-xl"></i></div>
+  </div>
+</div>
+
 
   <div class="bg-pink-50 p-4 rounded-lg">
     <div class="flex items-center mb-4">
-      <img src="/img/photoProfil.png" alt="Roger Dauber" class="w-12 h-12 rounded-full">
+      <img src="/img/photoProfil.png" alt="Roger Dauber" id="imgButton<?=$i?>" class="w-12 h-12 rounded-full">
       <div class="ml-4">
         <h3 class="text-lg font-medium"><?= $A_vue['commentaire'][$i]['pseudo'] ?></h3>
         <div class="flex items-center">
@@ -123,6 +140,17 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
 
   </div>
   <br>
+  <script>
+  document.getElementById("imgButton<?=$i?>").addEventListener("click", function(){
+    console.log("click");
+    document.getElementById("popup<?=$i?>").style.display = "block";
+  });
+
+  document.getElementById("close<?=$i?>").addEventListener("click", function(){
+    document.getElementById("popup<?=$i?>").style.display = "none";
+  });
+</script>
 <?php
 }
 ?>
+
