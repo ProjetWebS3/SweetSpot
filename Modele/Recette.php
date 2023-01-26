@@ -15,7 +15,7 @@ class Recette {
     }
 
     public function getCommentaire($params){
-        $stmt = $this->db->prepare("SELECT DISTINCT Compte.pseudo, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette = ?");
+        $stmt = $this->db->prepare("SELECT DISTINCT Compte.pseudo, Compte.date_creation, Compte.shadow AS compteShadow, Compte.date_connexion, Commentaire.* FROM Commentaire,Compte WHERE Commentaire.id_compte=Compte.id_compte AND Commentaire.id_recette = ?");
         $stmt->execute(array($params));
         $commentaire = $stmt->fetchAll();
         return $commentaire;

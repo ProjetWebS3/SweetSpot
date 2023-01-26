@@ -77,9 +77,10 @@
 <!-- PopUp utilisateur info-->
 <?php
 for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
-?>
-
-<div id="popup<?=$i?>" class="popup ml-auto mr-auto flex w-1/2 flex-col rounded-2xl bg-pink-50 text-xs md:text-base">
+if ($A_vue['commentaire'][$i]['compteShadow'] == 1) { ?>
+<div id="popup<?=$i?>" class="border-2 border-black popup ml-auto mr-auto flex w-1/2 flex-col rounded-2xl bg-gray-300 text-xs md:text-base">
+<?php } else { ?>
+<div id="popup<?=$i?>" class="border-2 border-black popup ml-auto mr-auto flex w-1/2 flex-col rounded-2xl bg-pink-50 text-xs md:text-base"> <?php } ?>
   <div class="flex flex-row justify-between">
     <div class="flex flex-row">
       <img src="/img/photoProfil.png" alt="Roger Dauber" class="m-3 h-12 w-12 rounded-full" />
@@ -87,14 +88,17 @@ for ($i = count($A_vue['commentaire']) -1 ; $i >= 0; $i--) {
     </div>
     <i id="close<?=$i?>" class="text-red-500 fa-solid fa-circle-xmark mt-auto mb-auto mr-5 pl-5 md:pl-0 fa-xl"></i>
   </div>
-  <p1 class="pl-5 md:ml-5 md:pl-0">Création du compte : 01/01/0000</p1><br>
-  <p1 class="pl-5 md:pl-0 md:ml-5">Dernière connexion : 01/01/0000</p1>
+  <p1 class="pl-5 md:ml-5 md:pl-0">Création du compte : <?= $A_vue['commentaire'][$i]['date_creation'] ?></p1><br>
+  <p1 class="pl-5 md:pl-0 md:ml-5">Dernière connexion : <?= $A_vue['commentaire'][$i]['date_connexion'] ?></p1>
   <div class="m-5 flex flex-row justify-between">
-    <p1>Nombre de commentaires : 6</p1>
     <?php
-        if ($A_vue['isAdmin']) {?>
-        <div><i class="fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/compte/supprimerCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
-        <?php
+    
+        if ($A_vue['isAdmin']) {
+        if ($A_vue['commentaire'][$i]['compteShadow'] == 1) { ?>
+          <div><i onclick="location.href='/compte/activerCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte'] ?>';" class= "fa-solid fa-person fa-xl pr-2"></i><i onclick="location.href='/compte/supprimerCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte']?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+        <?php } else { ?>
+          <div><i onclick="location.href='/compte/desactiverCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte'] ?>';" class="fa-solid fa-ghost fa-xl pr-2"></i><i onclick="location.href='/compte/supprimerCompte/<?= $A_vue['recette'][0]['id_recette'] ?>/<?= $A_vue['commentaire'][$i]['id_compte'] ?>';" class="fa-solid fa-gavel fa-xl"></i></div>
+        <?php }
         } ?>
   </div>
 </div>
