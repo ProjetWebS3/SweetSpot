@@ -12,7 +12,7 @@ echo "<script>window.scrollTo(0, $scroll_position);</script>";
   <div class="sm:text-2xl text-base">
     <p1>Coût : </p1><?= $A_vue['categories'][2]['nom'] ?></br></br>
     <p1>Temps de préparation : </p1><?= $A_vue['categories'][1]['nom'] ?></br></br>
-    <p1>Difficultée : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
+    <p1>Difficulté : </p1><?= $A_vue['categories'][0]['nom'] ?></br></br>
     <p1>Note Globale : </p1><p1 class="text-yellow-400"><?= rating_stars($A_vue['recette'][0]['note']) ?></p1>
   </div>
 </div>
