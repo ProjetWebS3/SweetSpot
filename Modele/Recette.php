@@ -66,6 +66,8 @@ class Recette {
     
 
     public function deleteRecipe($id_recette){
+        $stmt = $this->db->prepare("DELETE FROM Commentaire WHERE id_recette = ?");
+        $stmt->execute(array($id_recette));
         $stmt = $this->db->prepare("DELETE FROM RecetteCategorie WHERE id_recette = ?");
         $stmt->execute(array($id_recette));
         $stmt = $this->db->prepare("DELETE FROM Recette WHERE id_recette = ?");
