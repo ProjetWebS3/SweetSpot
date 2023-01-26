@@ -11,7 +11,7 @@
   <div class="flex-none gap-2">
     <div class="form-control">
       <form action="/Recette/search/" method=get>
-        <input type="text" name="search" placeholder="Search" class="input input-bordered" id="searchBar" />
+        <input type="text" name="search" placeholder="Recherche" class="input input-bordered" id="searchBar" />
       </form>
     </div>
     <div class="dropdown dropdown-end">
@@ -48,6 +48,7 @@
       document.getElementById("searchBarForm").submit();
     }
   });
+<<<<<<< HEAD
 
   function toggleSubMenu(link) {
     var subMenu = link.nextElementSibling;
@@ -59,3 +60,6 @@
   }
 
 </script>
+=======
+</script>
+>>>>>>> ca13a350d6c7b4c341a71ee3ba362ff5f8339fc6
